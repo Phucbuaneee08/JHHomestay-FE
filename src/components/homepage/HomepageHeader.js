@@ -71,10 +71,9 @@ function HomepageHeader() {
                         </h1>
                         <p className="mt-5 sm:mt-10 text-gray-600 font-normal text-center text-xl">Hãy để chúng tôi tìm kiếm cho bạn một điểm đến lý tưởng</p>
                     </div>
-                
-                   
                 </div>
         </div>
+
     );
 }
 
