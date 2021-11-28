@@ -5,7 +5,7 @@ import RecommendedTag from '../components/homepage/RecommendedTag'
 import Footer from "../components/Shared/Footer"
 function Homepage() {
     return(
-        <div>
+        <div classnName="bg-gray-200">
             <HomepageHeader />
             <FamousCity />
             <RecommendedTag/>
@@ -16,9 +16,16 @@ function Homepage() {
             <div className="w-full max-w-3/4 md:max-w-5/6 mx-auto">
                 <RecommendedHotelWrapper />
             </div>
+<<<<<<< HEAD
             <div className="w-full">
                 <Footer />
             </div>
+=======
+            <div className="h-96">
+
+            </div>
+             
+>>>>>>> features/top-rating
         </div>
     )
 }

@@ -9,12 +9,17 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+<<<<<<< HEAD
     "pure-react-carousel": "^1.27.8",
+=======
+    "axios": "^0.24.0",
+>>>>>>> features/top-rating
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modern-calendar-datepicker": "^3.1.6",
     "react-router-dom": "^5.1.2",
     "react-scripts": "4.0.3",
+    "save": "^2.4.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
