@@ -25,6 +25,7 @@ function FamousCity() {
     return (
         <div className="container mx-auto pt-16 max-w-3/4 md:max-w-5/6">
             <p className="md:text-4xl text-base font-bold"> Thành phố nổi tiếng </p>
+            <p className="md:text-xl text-base my-3"> Cùng Jade Hill bắt đầu chuyến hành trình chinh phục thế giới của bạn </p>
             <div className="flex items-center justify-center w-full h-full py-6 md:py-8">
                 {/* Carousel for very large size devices */}
                 <CarouselProvider className="2xl:block hidden" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={7} visibleSlides={5} step={1} infinite={true}>
