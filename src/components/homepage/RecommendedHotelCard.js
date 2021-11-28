@@ -18,7 +18,9 @@ function RecommendedHotelCard (props) {
     )
     return (
         <div className="shadow-2xl p-4 rounded-2xl"> 
-         <div className="bg-gray-800 h-64 shadow-xl rounded-2xl"></div>
+         <div className="bg-gray-800 h-64 shadow-xl rounded-2xl">
+             <img src={`http://localhost:8000${props.detail.photos[0].url}`} className="w-full h-full shadow-xl rounded-2xl"/>
+         </div>
          <p className="my-2 font-bold text-xl h-12"> {name}</p>
          <p className="my-2">{address}</p>
          <div className="flex justify-between mt-8">
