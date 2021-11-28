@@ -12,7 +12,7 @@ function Homepage() {
             <div className="w-full max-w-3/4 md:max-w-5/6 mx-auto">
                 <RecommendedHotelWrapper />
             </div>
-            <div className="">
+            <div className="w-full">
                 <Footer />
             </div>
         </div>

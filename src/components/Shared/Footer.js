@@ -69,7 +69,7 @@ const FooterTagList = FooterTag.map( (item) =>
 function Footer (){
     const FooterGrid = "text-white text:md mx-20";
     return (
-        <div className="w-full mx-auto bg-black container grid grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 pt-20 pb-10 mt-20">
+        <div className="w-full mr-0 bg-black grid grid-cols-4 pt-20 pb-10 mt-20">
 
             <div className= {FooterGrid}>
                 <p className = "text-xl font-medium">Thành Phố Nổi Bật</p>
