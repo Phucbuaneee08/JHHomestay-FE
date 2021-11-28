@@ -62,10 +62,18 @@ function HomepageHeader() {
                             </div>
                         </div>
                     </div>
-                </nav>
-                <SearchBar/>
-            </div>
-        </>
+                </div>
+            </nav>
+                <div className="container mx-auto flex flex-col items-center py-12 sm:py-24">
+                    <div className="w-11/12 sm:w-2/3 mb-5 sm:mb-10 m-5 h-96">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-gray-800 font-extrabold leading-tight">
+                            Bạn muốn đi đâu
+                        </h1>
+                        <p className="mt-5 sm:mt-10 text-gray-600 font-normal text-center text-xl">Hãy để chúng tôi tìm kiếm cho bạn một điểm đến lý tưởng</p>
+                    </div>
+                </div>
+        </div>
+
     );
 }
 
