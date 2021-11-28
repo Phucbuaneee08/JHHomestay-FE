@@ -2,7 +2,7 @@ import HomepageHeader from "../components/homepage/HomepageHeader"
 import RecommendedHotelWrapper from "../components/homepage/RecommendHotelWrapper"
 import FamousCity from '../components/homepage/FamousCity'
 import RecommendedTag from '../components/homepage/RecommendedTag'
-
+import Footer from "../components/Shared/Footer"
 function Homepage() {
     return(
         <div>
@@ -16,7 +16,9 @@ function Homepage() {
             <div className="w-full max-w-3/4 md:max-w-5/6 mx-auto">
                 <RecommendedHotelWrapper />
             </div>
-             
+            <div className="w-full">
+                <Footer />
+            </div>
         </div>
     )
 }
