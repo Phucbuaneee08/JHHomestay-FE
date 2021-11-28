@@ -7,7 +7,7 @@ import CustomerInput from "./CustomerInput";
 function SearchBar() {
   return (
     <>
-      <div className="container mx-auto pb-96 w-11/12 h-screen flex flex-col items-center justify-center">
+      <div className="container mx-auto pb-32 w-11/12 h-screen flex flex-col items-center justify-center">
         <IntroTitle/>
         <div className="relative w-auto flex bg-white rounded-full">
           <PlaceInput/>

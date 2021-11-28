@@ -6,8 +6,8 @@ function HomepageHeader() {
     const [show, setShow] = useState(false);
     return (
         <>
-            <div className="w-full bg-homepage-background bg-cover bg-no-repeat">
-                <nav className="w-full">
+            <div className="relative w-full bg-homepage-background bg-cover bg-no-repeat">
+                <nav className="w-full absolute top-0 left-0">
                     <div className="py-2 mx-auto flex items-center justify-between max-w-3/4 md:max-w-5/6 w-full">
                         <img className="h-12 w-auto sm:h-20" src={logo} alt="Logo"/>
                         <div>
