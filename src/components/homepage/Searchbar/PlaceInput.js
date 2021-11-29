@@ -1,9 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-function PlaceInput() {
+function PlaceInput({ filter }) {
   const inputEl = useRef(null);
+  const dispacth = useDispatch();
   const [place, setPlace] = useState('');
   const [focus, setFocus] = useState(false);
+
+  useEffect(() => {
+    dispacth({
+      type: 'UPDATE',
+      payload: { ...filter, place }
+    })
+  }, [place, dispacth]);
 
   return (
     <div 
@@ -32,7 +41,7 @@ function PlaceInput() {
         type="text"
         ref={inputEl}
         placeholder="Bạn muốn đi đâu?"
-        onChange={(e) => setPlace(e.target.value)}
+        onChange={e => setPlace(e.target.value)}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
       />

@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/outline';
+import { useDispatch } from 'react-redux';
 
-function CustomerInput() {
+function CustomerInput({ filter }) {
+  const dispacth = useDispatch();
+
   const [adult, setAdult] = useState(0);
   const [children, setChildren] = useState(0);
   const [baby, setBaby] = useState(0);
@@ -35,6 +38,14 @@ function CustomerInput() {
       useState: setPet
     }
   ]
+
+  const handleSumbit = () => {
+    setCustomerFocus(false);
+    dispacth({
+      type: 'UPDATE',
+      payload: { ...filter, adult, children, baby, pet }
+    })
+  }
 
   return (
     <>
@@ -88,7 +99,7 @@ function CustomerInput() {
         
           <button 
             className="w-full p-2 shadow-md hover:shadow-xl"
-            onClick={() => setCustomerFocus(false)}
+            onClick={handleSumbit}
           >Confirm</button>
         </div>
         : ''
