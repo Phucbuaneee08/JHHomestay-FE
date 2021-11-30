@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 
-function PlaceInput() {
+function PlaceInput({ getData }) {
   const inputEl = useRef(null);
   const [place, setPlace] = useState('');
   const [focus, setFocus] = useState(false);
@@ -32,9 +32,12 @@ function PlaceInput() {
         type="text"
         ref={inputEl}
         placeholder="Bạn muốn đi đâu?"
-        onChange={(e) => setPlace(e.target.value)}
+        onChange={e => setPlace(e.target.value)}
         onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
+        onBlur={() => {
+          setFocus(false);
+          getData({ place });
+        }}
       />
     </div>
   )
