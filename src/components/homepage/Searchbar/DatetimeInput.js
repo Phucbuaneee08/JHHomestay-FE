@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 
-function DatetimeInput() {
+function DatetimeInput({ getData }) {
   const [fromDate, setFromDate] = useState("Thêm ngày");
   const [toDate, setToDate] = useState("Thêm ngày");
 
@@ -17,14 +17,17 @@ function DatetimeInput() {
 
   useEffect(() => {
     if (selectedDayRange.from !== null) {
-      setFromDate(Object.values(selectedDayRange.from).join('/'));
+      const from = Object.values(selectedDayRange.from).join('-');
+      setFromDate(from);
       setFromFocus(false);
       setToFocus(true);
     }
     if (selectedDayRange.to !== null) {
-      setToDate(Object.values(selectedDayRange.to).join('/'));
+      const to = Object.values(selectedDayRange.to).join('-');
+      setToDate(to);
       setToFocus(false);
       setDatepicker(false);
+      getData({ from: fromDate, to });
     }
   }, [selectedDayRange]);
 
