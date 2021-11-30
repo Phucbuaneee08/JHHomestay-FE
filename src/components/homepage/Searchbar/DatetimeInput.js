@@ -17,13 +17,13 @@ function DatetimeInput({ getData }) {
 
   useEffect(() => {
     if (selectedDayRange.from !== null) {
-      const from = Object.values(selectedDayRange.from).join('/')
+      const from = Object.values(selectedDayRange.from).join('-');
       setFromDate(from);
       setFromFocus(false);
       setToFocus(true);
     }
     if (selectedDayRange.to !== null) {
-      const to = Object.values(selectedDayRange.to).join('/')
+      const to = Object.values(selectedDayRange.to).join('-');
       setToDate(to);
       setToFocus(false);
       setDatepicker(false);
