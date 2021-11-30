@@ -8,7 +8,7 @@ const filterState = {
   pet: -1
 }
 
-export const filterReducer = ( state = filterReducer, action) => {
+export const filterReducer = ( state = filterState, action) => {
   switch(action.type) {
     case "UPDATE": 
       return { ...state, ...action.payload };

@@ -3,22 +3,45 @@ import IntroTitle from "./IntroTitle";
 import PlaceInput from "./PlaceInput";
 import DatetimeInput from "./DatetimeInput";
 import CustomerInput from "./CustomerInput";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+
+const defaultData = {
+  place: '',
+  from: '',
+  to: '',
+  adult: -1,
+  children: -1,
+  baby: -1,
+  pet: -1
+}
 
 function SearchBar() {
-  const filter = useSelector(state => state.filterReducer);
+  const [data, setData] = useState(defaultData);
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    dispatch({
+      type: 'UPDATE',
+      payload: data
+    });
+  }
+
+  const getData = (dataInput) => {
+    setData({ ...data, ...dataInput });
+  }
 
   return (
     <>
       <div className="container mx-auto pb-32 w-11/12 h-screen flex flex-col items-center justify-center">
         <IntroTitle/>
         <div className="relative w-auto flex bg-white rounded-full">
-          <PlaceInput filter={filter}/>
-          <DatetimeInput filter={filter}/>
-          <CustomerInput filter={filter}/>
+          <PlaceInput getData={getData}/>
+          <DatetimeInput getData={getData}/>
+          <CustomerInput getData={getData}/>
           <button 
             className="flex justify-center flex-col sm:px-4 px-8 hover:bg-green-50 focus:shadow-xl rounded-full"
-            onClick={() => console.log(filter)}
+            onClick={handleSubmit}
           >  
             <SearchIcon className="w-6 h-6"/>
           </button>

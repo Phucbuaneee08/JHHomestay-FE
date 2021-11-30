@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { useDispatch } from 'react-redux';
 
-function DatetimeInput({ filter }) {
-  const dispacth = useDispatch();
-
+function DatetimeInput({ getData }) {
   const [fromDate, setFromDate] = useState("Thêm ngày");
   const [toDate, setToDate] = useState("Thêm ngày");
 
@@ -22,22 +19,15 @@ function DatetimeInput({ filter }) {
     if (selectedDayRange.from !== null) {
       const from = Object.values(selectedDayRange.from).join('/')
       setFromDate(from);
-      dispacth({
-        type: 'UPDATE',
-        payload: { ...filter, from}
-      })
       setFromFocus(false);
       setToFocus(true);
     }
     if (selectedDayRange.to !== null) {
       const to = Object.values(selectedDayRange.to).join('/')
       setToDate(to);
-      dispacth({
-        type: 'UPDATE',
-        payload: { ...filter, to }
-      })
       setToFocus(false);
       setDatepicker(false);
+      getData({ from: fromDate, to });
     }
   }, [selectedDayRange]);
 
