@@ -4,6 +4,8 @@ import React from "react"
 import Detail from "./pages/Detail";
 import Homepage from "./pages/Homepage";
 import Homestays from "./pages/Homestays";
+
+import FilteredHomestays from "./pages/pagination/FilteredHomestays";
 function App() {
   return (
     <div>
@@ -12,8 +14,8 @@ function App() {
           <Route path="/homepage" component={Homepage} />
           <Route path="/homestay" component={Homestays} />
           <Route path="/detail" component={Detail} />
+          <Route path="/listHomestays" component={FilteredHomestays} />
           <Redirect to="/homepage" />
-
         </Switch>
 
       </BrowserRouter>
