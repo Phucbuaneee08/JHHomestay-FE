@@ -1,42 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Posts from './Posts';
-import Pagination from './Pagination';
-import axios from 'axios';
+import React from 'react';
+import HomestayCard from './HomestayCard';
 
-const FilteredHomestays = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(16);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      const res = await axios.get('http://localhost:3000/homestay');
-      setPosts(res.data);
-      setLoading(false);
-    };
-
-    fetchPosts();
-  }, []);
-
-  // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  // Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber);
-
+const FilteredHomestays = ({homestay}) => {
   return (
-    <div className='container mt-5 mx-auto pt-16 max-w-5/6 md:max-w-9/10 mb-16 '>
-      <p className="md:text-2xl text-base font-bold mb-10"> Các Homestays phù hợp với bạn </p>
-      <Posts posts={currentPosts} loading={loading} />
-      <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={posts.length}
-        paginate={paginate}
-      />
+    <div className='container mt-5 mx-auto mb-16'>
+      <ul className='container mb-16 grid grid-cols-4 gap-10 mt-5 justify-between mx-auto'>
+        {homestay.map(props => (     
+          <HomestayCard detail={props}/>       
+        ))}
+      </ul>
     </div>
   );
 };
