@@ -30,9 +30,7 @@ const listHomestays=[
         {"name":"Homestay 22", "img":"https://i.pinimg.com/564x/aa/8d/63/aa8d63b5ca82a8d83360ec4072e2412e.jpg", "price":1000000, "type":"1 Phòng ngủ", "rate":5.0, "href":"#"}
     ]
 ]
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
+
 function Homestays() {
     const [currentPage, setCurrentPage] = useState(1);
     const totalPage=2;
@@ -49,11 +47,7 @@ function Homestays() {
             <Pagination
                 totalPages={totalPage}
                 paginate={paginate}
-                onCLick={() => (
-                    <a className={classNames('text-red-500 font-semibold')}>
-
-                    </a>
-                )}
+               
             />
             <p className="justify-center mb-10 text-center"> Page {currentPage} of {totalPage}</p>
         </div>
