@@ -1,6 +1,9 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment} from 'react'
 import { useDispatch } from 'react-redux'
+import Amenity from './Amenity'
+import RangeSlider from './RangeSlider'
+import Service from './Service'
 
 export default function FilterModal(props) {
     const dispatch = useDispatch()
@@ -51,36 +54,25 @@ export default function FilterModal(props) {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className="inline-block max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                            <div className="inline-block max-w-2xl w-1/2 p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                                 <Dialog.Title
                                     as="h3"
-                                    className="text-lg font-medium leading-6 text-gray-900"
+                                    className="text-xl font-bold leading-6 text-gray-900 text-center"
                                 >
                                     Đăng xuất
                                 </Dialog.Title>
-                                <div className="mt-2">
-                                    <p className="text-sm text-gray-500">
-                                        Thao tác này sẽ đăng xuất tài khoản của bạn. Bạn có muốn tiếp tục?
-                                    </p>
-                                </div>
 
-                                <div className="mt-4 flex flex-row justify-around">
-                                    <button
-                                        type="button"
-                                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                                        onClick={closeModal}
-                                    >
-                                        Quay lại
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-green-900 bg-green-100 border border-transparent rounded-md hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                                        onClick={logoutHandler}
-                                    >
-                                        Đăng xuất
+                                <div className="my-4 border-t border-b max-h-xl h-96 overflow-auto">
+                                    <RangeSlider/>
+                                    <Service/>
+                                    <Amenity/>
+                                </div>
+                                
+                                <div className="text-center">
+                                    <button className="inline-flex justify-center px-4 py-2 text-md font-bold text-gray-900 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500">
+                                        Xác nhận
                                     </button>
                                 </div>
-
                             </div>
                         </Transition.Child>
                     </div>

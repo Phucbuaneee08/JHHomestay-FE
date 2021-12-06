@@ -12,11 +12,20 @@ module.exports = {
       '1/2': '50%',
       '3/4': '75%',
       '5/6': '83.33%',
-      '9/10': '90%'
+      '9/10': '90%',
+      '2xl': '42rem'
+    },
+    maxHeight: {
+      'xl': '36rem'
     }
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['checked'],
+      borderColor: ['checked'],
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
