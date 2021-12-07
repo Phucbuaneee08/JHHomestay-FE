@@ -27,7 +27,7 @@ const Amenity = () => {
                 <div className="grid grid-cols-2 gap-4">{
                     amenities.map((item, index) => (
                         <label className="flex items-center space-x-3">
-                            <input type="checkbox" {...item} onClick={handleCheck(index)} className="h-6 w-6 text-green-400 border-gray-300 rounded-md focus:ring-0"/>
+                            <input type="checkbox" {...item} onClick={handleCheck(index)} className="h-4 w-4"/>
                             <span className="text-gray-900 font-medium">{item.label}</span>
                         </label>
                     ))

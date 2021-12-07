@@ -2,6 +2,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment} from 'react'
 import { useDispatch } from 'react-redux'
 import Amenity from './Amenity'
+import Categories from './Cateogies'
+import Cities from './Cities'
 import RangeSlider from './RangeSlider'
 import Service from './Service'
 
@@ -59,13 +61,15 @@ export default function FilterModal(props) {
                                     as="h3"
                                     className="text-xl font-bold leading-6 text-gray-900 text-center"
                                 >
-                                    Đăng xuất
+                                    Bộ lọc
                                 </Dialog.Title>
 
                                 <div className="my-4 border-t border-b max-h-xl h-96 overflow-auto">
                                     <RangeSlider/>
                                     <Service/>
                                     <Amenity/>
+                                    <Cities/>
+                                    <Categories/>
                                 </div>
                                 
                                 <div className="text-center">

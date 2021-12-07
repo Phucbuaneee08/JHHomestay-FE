@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
+    "match-sorter": "^6.3.1",
     "pure-react-carousel": "^1.27.8",
     "rc-slider": "^9.7.5",
     "react": "^17.0.2",
@@ -48,7 +49,6 @@
   "devDependencies": {
     "autoprefixer": "^9.8.8",
     "postcss": "^7.0.39",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "@tailwindcss/forms": "^0.2.1"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }
