@@ -14,8 +14,7 @@ const RangeSlider = () => {
     return (
         <>
             <div className="p-4 border-b">
-                <h1 className="text-2xl font-bold mb-2">Khoảng giá</h1>
-                Histogram??
+                <h1 className="text-2xl font-bold mb-8">Khoảng giá</h1>
                 <Range allowCross={false} value={value} onChange={onSliderChange}/>
                 <div className="mt-8 px-4 flex justify-between ">
                     <div>

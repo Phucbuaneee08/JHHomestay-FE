@@ -13,10 +13,10 @@ module.exports = {
       '3/4': '75%',
       '5/6': '83.33%',
       '9/10': '90%',
-      '2xl': '42rem'
+      '2xl': '46rem'
     },
     maxHeight: {
-      'xl': '36rem'
+      'xl': '32rem'
     }
   },
   variants: {
