@@ -14,13 +14,14 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modern-calendar-datepicker": "^3.1.6",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.1.2",
     "react-scripts": "4.0.3",
-    "save": "^2.4.0",
+    "redux": "^4.1.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "(set PORT=3006 || export PORT=3006) && craco start ",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"

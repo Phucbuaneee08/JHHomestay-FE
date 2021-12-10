@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/outline';
 
-function CustomerInput() {
+function CustomerInput({ getData }) {
   const [adult, setAdult] = useState(0);
   const [children, setChildren] = useState(0);
   const [baby, setBaby] = useState(0);
@@ -35,6 +35,11 @@ function CustomerInput() {
       useState: setPet
     }
   ]
+
+  const handleSumbit = () => {
+    setCustomerFocus(false);
+    getData({ adult, children, baby, pet });
+  }
 
   return (
     <>
@@ -88,7 +93,7 @@ function CustomerInput() {
         
           <button 
             className="w-full p-2 shadow-md hover:shadow-xl"
-            onClick={() => setCustomerFocus(false)}
+            onClick={handleSumbit}
           >Confirm</button>
         </div>
         : ''
