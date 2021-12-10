@@ -1,5 +1,8 @@
 import FilteredHomestays from "./pagination/FilteredHomestays"
 import Pagination from "./pagination/Pagination"
+import FilterModal from '../components/homestay/FilterModal'
+import Header from '../components/Shared/Header'
+
 import React, { useState} from 'react';
 
 const listHomestays=[
@@ -32,6 +35,7 @@ const listHomestays=[
 ]
 
 function Homestays() {
+    let [isOpen, setIsOpen]= useState(false)
     const [currentPage, setCurrentPage] = useState(1);
     const totalPage=2;
     const totalHomestay=22;
@@ -42,6 +46,18 @@ function Homestays() {
 
     return(
         <div className="max-w-9/10 mx-auto py-2">
+             <Header />
+             <div className="flex flex-row item-centers mx-auto py-2 max-w-9/10 justify-between ">
+                <h1> Tìm kiếm theo filter</h1>
+                <button 
+                onClick={() => setIsOpen(true)} 
+                className="mx-2 my-2 flex items-center bg-white transition duration-150 ease-in-out hover:border-gray-300 rounded-full border-2 border-gray-200 pl-3 pr-3 py-2 text-sm"
+                >
+                    <p classNam=""> Bộ lọc</p>
+                </button>
+            </div>
+            <FilterModal openProp={[isOpen, setIsOpen]}/>
+
             <p className="text-xl font-semibold"> Có {totalHomestay} homestays phù hợp với bạn </p>
             <FilteredHomestays homestay={currentHomestays}/>
             <Pagination
