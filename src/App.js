@@ -4,6 +4,7 @@ import React from "react"
 import Detail from "./pages/Detail";
 import Homepage from "./pages/Homepage";
 import Homestays from "./pages/Homestays";
+
 function App() {
   return (
     <div>
@@ -13,7 +14,6 @@ function App() {
           <Route path="/homestay" component={Homestays} />
           <Route path="/detail" component={Detail} />
           <Redirect to="/homepage" />
-
         </Switch>
 
       </BrowserRouter>
