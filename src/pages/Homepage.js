@@ -10,8 +10,8 @@ function Homepage() {
             <FamousCity />
             <RecommendedTag/>
             <div className="w-full max-w-3/4 md:max-w-5/6 mx-auto">
-                <p className="text-4xl font-bold mt-5  ">Top rating</p>
-                <p className="text-2xl mt-3">Subcontent</p>
+                <p className="text-4xl font-bold mt-5  ">Được đánh giá tốt</p>
+                <p className="text-xl mt-3">Homestay nào có nhiều đánh giá tốt, hãy cùng ZadeHill khám phá nhé</p>
             </div>
             <div className="w-full max-w-3/4 md:max-w-5/6 mx-auto">
                 <RecommendedHotelWrapper />
