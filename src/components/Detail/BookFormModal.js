@@ -1,18 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
-import { useDispatch } from "react-redux";
-import Categories from "./Cateogies";
-import Cities from "./Cities";
-import RangeSlider from "./RangeSlider";
-import Service from "./Service";
 import { XIcon } from "@heroicons/react/outline";
+import { Fragment } from "react";
+import BookForm from "./BookForm";
 
-export default function FilterModal(props) {
-  let [isOpen, setIsOpen] = props.openProp;
+const BookFormModal = (props) => {
+  const [isOpen, setIsOpen] = props.openProp;
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const closeModal = () => setIsOpen(false);
 
   return (
     <>
@@ -42,6 +36,7 @@ export default function FilterModal(props) {
             >
               &#8203;
             </span>
+
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -57,7 +52,7 @@ export default function FilterModal(props) {
                     as="h3"
                     className="text-xl font-bold leading-6 text-gray-900 text-center"
                   >
-                    Bộ lọc
+                    Đặt phòng
                   </Dialog.Title>
                   <button
                     className="absolute top-0 left-0 rounded-full transition ease-in-out duration-400 hover:bg-gray-200"
@@ -68,10 +63,7 @@ export default function FilterModal(props) {
                 </div>
 
                 <div className="my-4 border-t border-b max-h-xl overflow-auto">
-                  <Cities />
-                  <Categories />
-                  <RangeSlider />
-                  <Service />
+                  <BookForm/>
                 </div>
 
                 <div className="text-center">
@@ -86,4 +78,6 @@ export default function FilterModal(props) {
       </Transition>
     </>
   );
-}
+};
+
+export default BookFormModal;
