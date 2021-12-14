@@ -4,8 +4,12 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
+    "@mui/icons-material": "^5.2.1",
+    "@mui/material": "^5.2.3",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -23,7 +27,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "(set PORT=3006 || export PORT=3006) && craco start ",
+    "start": "craco start ",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
