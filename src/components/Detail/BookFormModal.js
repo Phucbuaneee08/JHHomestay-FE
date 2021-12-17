@@ -1,12 +1,47 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import BookForm from "./BookForm";
 
-const BookFormModal = (props) => {
-  const [isOpen, setIsOpen] = props.openProp;
+const initUserInfo = {
+  username: [],
+  phoneNumber: "",
+  identificationNumber: "",
+  email: "",
+};
 
+const serviceName = [
+  { name: "Lẩu thái", pricePerUnit: 300000, amount: 0 },
+  { name: "Buffet", pricePerUnit: 1000000, amount: 0 },
+  { name: "Karaoke", pricePerUnit: 500000, amount: 0 },
+  { name: "Tiệc mini", pricePerUnit: 500000, amount: 0 },
+  { name: "Lẩu hải sản", pricePerUnit: 250000, amount: 0 },
+  { name: "BBQ King", pricePerUnit: 200000, amount: 0 },
+  { name: "Nướng", pricePerUnit: 200000, amount: 0 },
+  { name: "Cơm bình dân", pricePerUnit: 50000, amount: 0 },
+  { name: "Gỏi", pricePerUnit: 500000, amount: 0 },
+];
+
+const BookFormModal = (props) => {
+  const { from, to } = useSelector((state) => state.filterReducer);
+
+  const [isOpen, setIsOpen] = props.openProp;
   const closeModal = () => setIsOpen(false);
+
+  const [userInfo, setUserInfo] = useState(initUserInfo);
+  const [timedate, setTimedate] = useState({
+    startDate: from === "" ? new Date() : from,
+    endDate: to === "" ? new Date() : to,
+  });
+  const [serviceState, setServiceState] = useState(serviceName);
+  const [servicePrice, setServicePrice] = useState(0);
+
+  useEffect(() => {
+    let sum = 0;
+    for (let i  = 0; i < serviceState.length; i++) sum += serviceState[i].pricePerUnit * serviceState[i].amount;
+    setServicePrice(sum);
+  }, [serviceState]);
 
   return (
     <>
@@ -62,13 +97,17 @@ const BookFormModal = (props) => {
                   </button>
                 </div>
 
-                <div className="my-4 border-t border-b max-h-xl overflow-auto">
-                  <BookForm/>
+                <div className="my-4 border-t border-b max-h-xl overflow-y-scroll overflow-x-hidden">
+                  <BookForm
+                    userProps={[userInfo, setUserInfo]}
+                    timedateProps={[timedate, setTimedate]}
+                    serviceProps={[serviceState, setServiceState]}
+                  />
                 </div>
 
                 <div className="text-center">
                   <button className="inline-flex justify-center px-4 py-2 text-md font-bold text-gray-900 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500">
-                    Xác nhận
+                    {servicePrice === 0 ? 'Xác nhận' : `${servicePrice}đ`}
                   </button>
                 </div>
               </div>

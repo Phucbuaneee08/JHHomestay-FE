@@ -2,6 +2,7 @@ import { useState } from "react";
 import BookFormModal from "../components/Detail/BookFormModal";
 
 function Detail() {
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -10,7 +11,7 @@ function Detail() {
         className="
         mx-2 my-2 px-3 py-2
         border-2 border-gray-200 
-        rounded-full
+        rounded-lg
         text-sm
         transition duration-150 ease-in-out 
         hover:border-gray-300"
@@ -18,7 +19,7 @@ function Detail() {
       >
         Đặt phòng
       </button>
-      <BookFormModal openProp={[isOpen, setIsOpen]} />
+      <BookFormModal openProp={[isOpen, setIsOpen]}/>
     </>
   );
 }

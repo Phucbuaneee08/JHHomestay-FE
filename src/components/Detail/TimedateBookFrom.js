@@ -1,44 +1,39 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-/* Hiện mới lấy data từ redux, chưa thể thay đổi data */
-
-const TimedateBookForm = () => {
-  const { from, to } = useSelector((state) => state.filterReducer);
-  const [dayRange, setDayRange] = useState({
-    checkinDay: from,
-    checkoutDay: to,
-  });
-
-  const handleInputChange = (e) => {
-    const tempDayRange = { ...dayRange, [e.target.name]: e.target.value };
-    setDayRange(tempDayRange);
-  };
+const TimedateBookForm = (props) => {
+  const [date, setDate] = props.timedateProps;
 
   return (
     <>
-      <label htmlFor="checkin" className="flex flex-col p-2">
-        <span className="text-sm pl-4">Ngày check in</span>
-        <input
-          className="border-2 px-4 py-2 rounded-full"
-          id="checkin"
-          type="text"
-          name="checkinDay"
-          value={dayRange.checkinDay}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label htmlFor="checkout" className="flex flex-col p-2">
-        <span className="text-sm pl-4">Ngày check out</span>
-        <input
-          className="border-2 px-4 py-2 rounded-full"
-          id="checkout"
-          type="text"
-          name="checkoutDay"
-          value={dayRange.checkoutDay}
-          onChange={handleInputChange}
-        />
-      </label>
+      <div className="relative mt-6 border-t pt-2">
+        <h1 className="text-xl font-medium">Chuyến đi của bạn</h1>
+        <div className="flex items-center justify-between mt-2 px-12">
+          <p className="text-md">Ngày check in</p>
+          <div>
+            <ReactDatePicker
+              className="border rounded-md p-2 px-4 font-light hover:border-green-500 focus:outline-none"
+              minDate={new Date()}
+              selected={date.startDate}
+              dateFormat="dd/MM/yyyy"
+              onChange={(e) => setDate({ ...date, startDate: e })}
+            />
+          </div>
+        </div>
+        <div className="flex items-center justify-between mt-2 px-12">
+          <p className="text-md">Ngày check out</p>
+          <div>
+            <ReactDatePicker
+              className="border rounded-md p-2 px-4 font-light focus:outline-none"
+              minDate={date.startDate}
+              selected={date.endDate}
+              dateFormat="dd/MM/yyyy"
+              onChange={(e) => setDate({ ...date, endDate: e })}
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
