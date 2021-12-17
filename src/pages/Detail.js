@@ -8,9 +8,7 @@ import Feedback from "./detailHomestay/Feedback.js";
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
-import PoolOutlinedIcon from '@mui/icons-material/PoolOutlined';
-import CellWifiOutlinedIcon from '@mui/icons-material/CellWifiOutlined';
-import SellTwoToneIcon from '@mui/icons-material/SellTwoTone';
+import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 
 function Detail() {
     const [data, setData] = useState([])
@@ -74,8 +72,7 @@ function Detail() {
                   <div className="grid grid-cols-2">
                     {data.amenities && data.amenities.length ?
                     data.amenities.map (item => (
-                      <div className="flex">
-                        <CellWifiOutlinedIcon className="text-gray-700 pr-2"/>
+                      <div className="flex py-1">
                         <AmenitiesAndServices detail={item} className="flex flex-row"/>
                       </div>
                       )):null}
@@ -88,8 +85,7 @@ function Detail() {
                   <div className="grid grid-cols-2">
                     {data.generalServices && data.generalServices.length ?
                     data.generalServices.map (item => (
-                      <div className="flex">
-                        <PoolOutlinedIcon className="text-gray-700 pr-2"/>
+                      <div className="flex py-1">
                         <AmenitiesAndServices 
                           detail={item}
                           className="flex flex-row"
@@ -104,12 +100,12 @@ function Detail() {
                   <div className="grid grid-cols-2">
                     {data.services && data.services.length ?
                     data.services.map (item => (
-                      <div className="flex">
-                        <SellTwoToneIcon className="text-gray-700 pr-2"/>
-                        <AmenitiesAndServices 
-                          detail={item} 
-                          className="flex flex-row" 
-                          />
+                      <div className="flex py-1">
+                        <BoltOutlinedIcon className="text-gray-900 mr-3 mt-1"/>
+                        <p className="text-lg text-gray-900 flex flex-row">
+                          {item.name} 
+                        </p>
+                        
                       </div>
                       )):null}
 
