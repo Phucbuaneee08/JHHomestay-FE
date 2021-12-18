@@ -1,18 +1,35 @@
 const filterState = {
-  place: '',
-  from: '',
-  to: '',
-  adult: -1,
-  children: -1,
-  baby: -1,
-  pet: -1
+  province: '',
+  type: '',
+  avarageRates: '',
+  amenities: [],
+  generalService: [],
+  minPrice: 0,
+  maxPrice: 10000000,
+  checkinDate: '',
+  checkoutDate: '',
 }
 
-export const filterReducer = ( state = filterState, action) => {
-  switch(action.type) {
-    case "UPDATE": 
+const idState = {
+  id: '',
+}
+
+export const filterReducer = (state = filterState, action) => {
+  switch (action.type) {
+    case "UPDATE":
       return { ...state, ...action.payload };
-    default: 
+    case "RESET":
+      return filterState
+    default:
+      return state;
+  }
+}
+
+export const homestayIdReducer = (state = idState, action) => {
+  switch (action.type) {
+    case "UPDATE":
+      return { ...state, ...action.payload };
+    default:
       return state;
   }
 }

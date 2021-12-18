@@ -3,13 +3,19 @@ import { useState } from 'react';
 import 'rc-slider/assets/index.css';
 
 const maxPrice = 3000000;       // 3tr
-const minPrice = 500000;        // 500k
+const minPrice = 500000;      // 500k
 
-const RangeSlider = () => {
-    const [value, setValue] = useState([0, 100]);
-    const onSliderChange = value => setValue(value);
+const RangeSlider = (props) => {
+    const scaleCal = price => (price - minPrice ) * 100 / (maxPrice - minPrice)
+    let [filterInput, setFilterInput] = props.filterInputProps
+    const [value, setValue] = useState([scaleCal(filterInput.minPrice), scaleCal(filterInput.maxPrice)]);
 
     const calPrice = scale => (maxPrice - minPrice) * scale / 100 + minPrice;
+
+    const onSliderChange = changedValue => {
+        setValue(changedValue);
+        setFilterInput({...filterInput, minPrice: calPrice(changedValue[0]), maxPrice: calPrice(changedValue[1])})
+    }
 
     return (
         <>

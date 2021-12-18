@@ -1,30 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const serviceList = [
-  { id: "service-0", value: false, label: "Bể bơi" },
-  { id: "service-1", value: false, label: "Phòng karaoke" },
-  { id: "service-2", value: false, label: "Suối nước nóng" },
-  { id: "service-3", value: false, label: "Coffee bên hồ" },
-  { id: "service-4", value: false, label: "Dọn phòng" },
-  { id: "service-5", value: false, label: "Cho thuê xe tự lái" },
-  { id: "service-6", value: false, label: "Dịch vụ giặt ủi" },
-  { id: "service-7", value: false, label: "Massage trị liệu" },
-  { id: "service-8", value: false, label: "Xông hơi" },
-  { id: "service-9", value: false, label: "Thuê hướng dẫn viên du lịch" },
+  { id: "service-0", checked: false, label: "Bể bơi" },
+  { id: "service-1", checked: false, label: "Phòng karaoke" },
+  { id: "service-2", checked: false, label: "Suối nước nóng" },
+  { id: "service-3", checked: false, label: "Coffee bên hồ" },
+  { id: "service-4", checked: false, label: "Dọn phòng" },
+  { id: "service-5", checked: false, label: "Cho thuê xe tự lái" },
+  { id: "service-6", checked: false, label: "Dịch vụ giặt ủi" },
+  { id: "service-7", checked: false, label: "Massage trị liệu" },
+  { id: "service-8", checked: false, label: "Xông hơi" },
+  { id: "service-9", checked: false, label: "Thuê hướng dẫn viên du lịch" },
 ];
 
-const Service = () => {
+const Service = (props) => {
   const [services, setServices] = useState(serviceList);
+  let [filterInput, setFilterInput] = props.filterInputProps
 
-  const handleCheck = (index) => () =>
-    setServices([
-      ...services.slice(0, index),
-      {
-        ...services[index],
-        value: !services[index].value,
-      },
-      ...services.slice(index + 1),
-    ]);
+  function handleCheck(index) {
+    const tempService = services
+    tempService[index].checked = !tempService[index].checked
+    const reduxService = tempService.filter(item => item.checked === true).map(item => item.label)
+
+    console.log(tempService)
+    setServices(tempService)
+    setFilterInput({ ...filterInput, generalService: reduxService })
+
+  }
 
   return (
     <>
@@ -36,7 +38,7 @@ const Service = () => {
               <input
                 type="checkbox"
                 {...item}
-                onClick={handleCheck(index)}
+                onClick={() => handleCheck(index)}
                 className="h-4 w-4"
               />
               <span className="text-gray-900 font-medium">{item.label}</span>
