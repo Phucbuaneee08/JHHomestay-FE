@@ -1,43 +1,24 @@
-import Masonry from "react-masonry-css";
 import React,{useState} from "react";
-import "./Booking_Masonry.css";
 
-const fakedataPrice = "2.000.000";
-const fakedateOrderDay = ["01/01/2022","02/01/2022"];
-
-const fakedataPictureURL = [
-    "https://picsum.photos/id/237/200/300",
-    "https://picsum.photos/seed/picsum/200/300",
-    "https://picsum.photos/200/300?grayscale",
-    "https://picsum.photos/id/129/4910/3252",
-    "https://picsum.photos/id/13/2500/1667",
-    "https://picsum.photos/id/130/3807/2538",
-    "https://picsum.photos/id/131/4698/3166",
-    "https://picsum.photos/id/132/1600/1066",
-    "https://picsum.photos/id/133/2742/1828",
-    "https://picsum.photos/id/134/4928/3264",
-    "https://picsum.photos/id/135/2560/1920",
-    "https://picsum.photos/id/141/2048/1365",
-    "https://picsum.photos/id/142/4272/2848"
-]
-
-const fakedataPictureList = fakedataPictureURL.map( (item) =>
-    <img src={item}></img>
-)
-
-const splitFakedateOrderDay = fakedateOrderDay.map( function(day){
-    var parts = day.toString().split("/");
-    var dd = parseInt(parts[1], 10);
-    var mm = parseInt(parts[0], 10);
-    var yyyy = parseInt(parts[2], 10);
-    return [dd,mm,yyyy];
-})
-
-
-function Booking_Masonry() {
+function Detail_Booking() {
+    
     const [startOrderDay,setStartOderDay] = useState("");
     const [endOrderDay,setEndOrderDay] = useState("");
     
+    const fakedataPrice = "2.000.000";
+    const fakedateOrderDay = ["01/01/2022","02/01/2022"];
+
+
+    const splitFakedateOrderDay = fakedateOrderDay.map( function(day) {
+        var parts = day.toString().split("/");
+        var dd = parseInt(parts[1], 10);
+        var mm = parseInt(parts[0], 10);
+        var yyyy = parseInt(parts[2], 10);
+        return [dd,mm,yyyy];
+    })
+
+
+    // kiểm tra định dạng ngày nhập vào
     function isValidDate(dateString)
     {   
     // First check for the pattern
@@ -70,6 +51,8 @@ function Booking_Masonry() {
     return true;
 };
 
+
+// kiểm tra ngày đặt có trùng với ngày khách khác đã đặt 
 function checkday(start, end){
     var sparts = start.toString().split("/");
     var sday = parseInt(sparts[0], 10);
@@ -183,31 +166,13 @@ function submitForm(e) {
       alert("thành công")
     }
   }
-  const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1
-  };
   
 
+
     return(
-    <div>
-        <div className="max-w-3/4 mx-auto my-20">
-                <Masonry breakpointCols={breakpointColumnsObj} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
-                    {fakedataPictureList}
-                </Masonry>
-            
-        </div>
-        <form onSubmit={submitForm}>
-
-            <div className="max-w-3/4 mx-auto flex flex-row justify-center items-center" >
+    <div className="max-w-3/4 mx-auto">
         
-                <div className="bg-green-400 w-3/5 text-2xl">
-                        <p>Đây Là Phần Đánh Giá Bên Trái Chiếm 3/5</p>
-                </div>
-
-                
+        <form onSubmit={submitForm}>
 
                 <div className="border-solid border-2 border-green-400 shadow-xl rounded-xl w-2/5 lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
                     <p className="text-center text-3xl font-bold text-gray-800 mb-5">
@@ -255,11 +220,9 @@ function submitForm(e) {
                         </button>
                     </div>
                 </div>
-                
-            </div>
         </form>
     </div>
     )
 }
 
-export default Booking_Masonry;
+export default Detail_Booking;
