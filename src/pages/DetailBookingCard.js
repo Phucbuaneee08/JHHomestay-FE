@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-function Detail_Booking() {
+function DetailBookingCard() {
     
     const [startOrderDay,setStartOderDay] = useState("");
     const [endOrderDay,setEndOrderDay] = useState("");
@@ -225,4 +225,4 @@ function submitForm(e) {
     )
 }
 
-export default Detail_Booking;
+export default DetailBookingCard;
