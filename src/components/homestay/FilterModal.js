@@ -48,37 +48,37 @@ export default function FilterModal(props) {
                             <Dialog.Overlay className="fixed inset-0" />
                         </Transition.Child>
 
-                        {/* This element is to trick the browser into centering the modal contents. */}
-                        <span
-                            className="inline-block h-screen align-middle"
-                            aria-hidden="true"
-                        >
-                            &#8203;
-                        </span>
-                        <Transition.Child
-                            as={Fragment}
-                            enter="ease-out duration-300"
-                            enterFrom="opacity-0 scale-95"
-                            enterTo="opacity-100 scale-100"
-                            leave="ease-in duration-200"
-                            leaveFrom="opacity-100 scale-100"
-                            leaveTo="opacity-0 scale-95"
-                        >
-                            <div className="inline-block max-w-2xl w-2/3 p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                                <div className="relative">
-                                    <Dialog.Title
-                                        as="h3"
-                                        className="text-xl font-bold leading-6 text-gray-900 text-center"
-                                    >
-                                        Bộ lọc
-                                    </Dialog.Title>
-                                    <button
-                                        className="absolute top-0 right-0 rounded-full transition ease-in-out duration-400 hover:bg-gray-200"
-                                        onClick={closeModal}
-                                    >
-                                        <XIcon className="w-6 h-6" />
-                                    </button>
-                                </div>
+            {/* This element is to trick the browser into centering the modal contents. */}
+            <span
+              className="inline-block h-screen align-middle"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className="inline-block max-w-2xl w-2/3 p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                <div className="relative">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-xl font-bold leading-6 text-gray-900 text-center"
+                  >
+                    Bộ lọc
+                  </Dialog.Title>
+                  <button
+                    className="absolute top-0 left-0 rounded-full transition ease-in-out duration-400 hover:bg-gray-200"
+                    onClick={closeModal}
+                  >
+                    <XIcon className="w-6 h-6" />
+                  </button>
+                </div>
 
                                 <div className="my-4 border-t border-b max-h-xl overflow-auto">
                                     <Cities filterInputProps={[filterInput, setFilterInput]} />

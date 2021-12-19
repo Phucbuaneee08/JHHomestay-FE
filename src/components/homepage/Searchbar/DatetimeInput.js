@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
 
 function DatetimeInput({ getData }) {
   const [fromDate, setFromDate] = useState("Thêm ngày");
