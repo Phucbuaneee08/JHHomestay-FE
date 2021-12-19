@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import React from "react"
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
 
 import Detail from "./pages/Detail";
 import Homepage from "./pages/Homepage";

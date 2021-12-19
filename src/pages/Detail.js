@@ -1,16 +1,17 @@
-import Footer from "../components/Shared/Footer.js"
 
+import Footer from "../components/Shared/Footer.js"
 import Description from "./detailHomestay/Description"
 import AmenitiesAndServices from "./detailHomestay/AmenitiesAndServices.js";
 import Rates from "./detailHomestay/Rates.js";
 import Feedback from "./detailHomestay/Feedback.js";
-
+import BookFormModal from "../components/Detail/BookFormModal";
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 
 function Detail() {
+    const [isOpen, setIsOpen] = useState(false);
     const [data, setData] = useState([])
     useEffect(() => {
         const fetchData = async() => {
@@ -58,6 +59,22 @@ function Detail() {
 
     return(
       <div>
+        <div>
+          <button
+          className="
+          mx-2 my-2 px-3 py-2
+          border-2 border-gray-200 
+          rounded-lg
+          text-sm
+          transition duration-150 ease-in-out 
+          hover:border-gray-300"
+          onClick={() => setIsOpen(true)}
+          >
+          Đặt phòng
+          </button>
+          <BookFormModal openProp={[isOpen, setIsOpen]}/>
+        </div>
+      
         <div className="h-96 w-full border"> Photos </div>
         <div className=" max-w-9/10 xl:max-w-5/6 mx-auto ">
           <div className="grid grid-cols-5 mt-10 border-b border-gray-300">
@@ -141,5 +158,4 @@ function Detail() {
       </div>
     )
 }
-
-export default Detail
+export default Detail;
