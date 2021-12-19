@@ -16,6 +16,7 @@ function RecommendedHotelCard (props) {
 
         </div>
     )
+    console.log(props.detail.photos[0].url)
     return (
         <div className="shadow-2xl p-4 rounded-2xl"> 
          <div className="bg-gray-800 h-64 shadow-xl rounded-2xl">
