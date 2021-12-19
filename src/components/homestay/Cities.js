@@ -11,16 +11,19 @@ const cityList = [
     'Vĩnh Long', 'Vĩnh Phúc', 'Yên Bái'
 ]
 
-const Cities = () => {
-    const [place, setPlace] = useState('');
+const Cities = (props) => {
+    let [filterInput, setFilterInput] = props.filterInputProps
+    const [place, setPlace] = useState(filterInput.province);
     const [focus, setFocus] = useState(false);
 
     const handleInput = (e) => {
         setPlace(e.target.value);
+        setFilterInput({...filterInput, province: e.target.value})
     }
     const handleClick = (item) => () => {
         setFocus(false);
         setPlace(item);
+        setFilterInput({...filterInput, province: item})
     } 
 
     return (
@@ -29,7 +32,8 @@ const Cities = () => {
                 <h1 className="text-2xl font-bold mb-4">Thành phố</h1>
                 <input type="text" placeholder="Địa điểm" 
                     className="border rounded-md w-full p-2 mb-2 focus:outline-none" 
-                    value={place} onChange={handleInput}
+                    value={place} 
+                    onChange={handleInput}
                     onFocus={() => setFocus(true)}
                 />
                 {
