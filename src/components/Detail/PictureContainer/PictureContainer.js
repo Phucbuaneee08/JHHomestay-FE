@@ -18,7 +18,7 @@ function DetailPanelPicture() {
     ]
 
     return(
-        <div className=" max-w-3/4 mx-auto my-20">
+        <div className="max-w-2/3 mx-auto my-20">
 
             <div className="w-full grid grid-cols-4 gap-2 ">
                 
@@ -38,7 +38,6 @@ function DetailPanelPicture() {
                 </div>
 
             </div>
-            <p>hahahahah</p>
         </div>
     )
 }

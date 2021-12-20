@@ -1,10 +1,12 @@
 
-import Footer from "../components/Shared/Footer.js"
-import Description from "./detailHomestay/Description"
-import AmenitiesAndServices from "./detailHomestay/AmenitiesAndServices.js";
-import Rates from "./detailHomestay/Rates.js";
-import Feedback from "./detailHomestay/Feedback.js";
-import BookFormModal from "../components/Detail/BookFormModal";
+import Footer from "../components/Shared/Footer"
+import Description from "../components/Detail/Information/Description"
+import AmenitiesAndServices from "../components/Detail/Information/AmenitiesAndServices";
+import Rates from "../components/Detail/Information/Rates";
+import Feedback from "../components/Detail/Information/Feedback";
+import BookFormModal from "../components/Detail/BookingForm/BookFormModal";
+import DetailPanelPicture from "../components/Detail/PictureContainer/PictureContainer"
+
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
@@ -75,8 +77,8 @@ function Detail() {
           <BookFormModal openProp={[isOpen, setIsOpen]}/>
         </div>
       
-        <div className="h-96 w-full border"> Photos </div>
-        <div className=" max-w-9/10 xl:max-w-5/6 mx-auto ">
+        <DetailPanelPicture />
+        <div className=" max-w-2/3 mx-auto ">
           <div className="grid grid-cols-5 mt-10 border-b border-gray-300">
             <div className="col-start-1 col-end-4">
                 <Description 

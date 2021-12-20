@@ -17,7 +17,10 @@ const TimedateBookForm = (props) => {
               minDate={new Date()}
               selected={date.startDate}
               dateFormat="dd/MM/yyyy"
-              onChange={(e) => setDate({ ...date, startDate: e })}
+              onChange={(e) => {
+                setDate({ ...date, startDate: e })
+                console.log(e.getDate())
+                }}
             />
           </div>
         </div>

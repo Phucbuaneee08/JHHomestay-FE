@@ -1,5 +1,5 @@
-import FilteredHomestays from "./pagination/FilteredHomestays"
-import Pagination from "./pagination/Pagination"
+import FilteredHomestays from "../components/homestay/pagination/FilteredHomestays"
+import Pagination from "../components/homestay/pagination/Pagination"
 import FilterModal from '../components/homestay/FilterModal'
 import Header from '../components/Shared/Header'
 
