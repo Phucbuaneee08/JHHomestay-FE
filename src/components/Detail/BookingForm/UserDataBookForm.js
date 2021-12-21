@@ -9,16 +9,16 @@ const UserDataBookForm = (props) => {
 
   const handleEnterName = (e) => {
     if (e.key === "Enter" && name !== "") {
-      const tempUsername = [...data.username, name.trim()];
-      setData({ ...data, username: tempUsername });
+      const tempAccompanyingCustomerName = [...data.accompanyingCustomerName, name.trim()];
+      setData({ ...data, accompanyingCustomerName: tempAccompanyingCustomerName });
       setName("");
     }
   };
 
   const handleRemoveName = (index) => {
-    const tempUsername = [...data.username];
-    tempUsername.splice(index, 1);
-    setData({ ...data, username: tempUsername });
+    const tempAccompanyingCustomerName = [...data.accompanyingCustomerName];
+    tempAccompanyingCustomerName.splice(index, 1);
+    setData({ ...data, accompanyingCustomerName: tempAccompanyingCustomerName });
   };
 
   const handleInputChange = (e) => {
@@ -33,18 +33,29 @@ const UserDataBookForm = (props) => {
       <h1 className="text-xl font-medium">Thông tin liên hệ</h1>
 
       <div>
-        <label htmlFor="username" className="flex flex-col p-2">
+        <label htmlFor="mainCustomerName" className="flex flex-col p-2">
+          <p className="text-md pl-4">Họ và Tên người đặt phòng</p>
+          <input
+            className="border px-4 py-2 rounded-md focus:outline-none"
+            id="mainCustomerName"
+            type="text"
+            name="mainCustomerName"
+            value={data.mainCustomerName}
+            onChange={(e) =>
+              setData({ ...data, mainCustomerName: e.target.value })
+            }
+            autoComplete="off"
+          />
+        </label>
+        <label htmlFor="accompanyingCustomerName" className="flex flex-col p-2">
           <p className="text-md pl-4">
-            Họ và Tên
-            <span className="text-sm ml-2 italic opacity-50">
-              Vui lòng điền tên của toàn bộ hành khách
-            </span>
+            Họ và Tên người đi kèm
           </p>
           <input
             className="border px-4 py-2 rounded-md focus:outline-none"
-            id="username"
+            id="accompanyingCustomerName"
             type="text"
-            name="username"
+            name="accompanyingCustomerName"
             value={name}
             onChange={handleChangeName}
             onKeyDown={handleEnterName}
@@ -52,7 +63,7 @@ const UserDataBookForm = (props) => {
           />
         </label>
         <div className="flex flex-wrap">
-          {data.username.map((item, index) => (
+          {data.accompanyingCustomerName.map((item, index) => (
             <span
               key={index}
               className="px-4 py-2 pr-1 border rounded-md m-2 flex items-center pointer-cursor"
