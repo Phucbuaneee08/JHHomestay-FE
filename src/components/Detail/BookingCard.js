@@ -8,6 +8,7 @@ function BookingCard() {
     
     const [startOrderDay,setStartOderDay] = useState(new Date());
     const [endOrderDay,setEndOrderDay] = useState(new Date());
+    const [countCustomer,setCountCustomer] = useState(0)
     
     const [data, setData] = useState([])
     
@@ -63,6 +64,10 @@ function BookingCard() {
         if(startOrderDay.getTime() >= endOrderDay.getTime())
             alert("vui lòng chọn lại ngày")
         else
+        if(countCustomer !== parseInt(countCustomer) || countCustomer <= 0){
+            alert("nhập lại số lượng khách")
+        }
+        else
         if(check)
             alert("thành công")
         else
@@ -115,7 +120,7 @@ function BookingCard() {
                         <label  className="pl-5 text-lg font-medium text-gray-800 align-baseline mr-2 w-1/3">
                             Khách
                         </label>
-                        <input id="coutCustomer" className="pl-5 border-none focus:outline-none text-md font-medium leading-6 text-gray-800 w-2/3 pl-3 pb-1 pt-3" placeholder="2"></input>
+                        <input onChange={(e) => setCountCustomer(e)} className="pl-5 border-none focus:outline-none text-md font-medium leading-6 text-gray-800 w-2/3 pl-3 pb-1 pt-3" placeholder="0"></input>
                     </div>
 
                     <div className="mt-8" >
