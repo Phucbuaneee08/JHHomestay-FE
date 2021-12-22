@@ -1,5 +1,6 @@
+import './PictureContainer.css';
 
-function DetailPanelPicture() {
+function PictureContainer() {
 
     const fakedataPictureURL = [
         "https://picsum.photos/id/237/200/300",
@@ -16,30 +17,18 @@ function DetailPanelPicture() {
         "https://picsum.photos/id/141/2048/1365",
         "https://picsum.photos/id/142/4272/2848"
     ]
-
+    
     return(
-        <div className="max-w-2/3 mx-auto my-20">
-
-            <div className="w-full grid grid-cols-4 gap-2 ">
-                
-                <div className="h-96 col-span-2">
-                    <img src = {fakedataPictureURL[1]} className="h-full w-full rounded-l-xl"></img>
-                </div>
-
-                <div className="h-96 grid grid-rows-2 gap-2">
-                    
-                    <img src = {fakedataPictureURL[6]} className="h-full w-full  "></img>
-                    <img src = {fakedataPictureURL[7]} className="h-full w-full "></img>
-                </div>
-
-                <div className="h-96 grid grid-rows-2 gap-2">
-                    <img src = {fakedataPictureURL[8]} className="h-full w-full rounded-tr-xl"></img>
+        <div className="max-w-2/3 mx-auto mb-20 ">
+            <div className="grid-container">
+                    <img src = {fakedataPictureURL[1]} className="h-full w-full rounded-l-xl picture1"></img>
+                    <img src = {fakedataPictureURL[6]} className="h-full w-full "></img>
+                    <img src = {fakedataPictureURL[7]} className="h-full w-full rounded-tr-xl"></img>
+                    <img src = {fakedataPictureURL[8]} className="h-full w-full "></img>
                     <img src = {fakedataPictureURL[9]} className="h-full w-full rounded-br-xl"></img>
-                </div>
-
             </div>
         </div>
     )
 }
 
-export default DetailPanelPicture;
+export default PictureContainer;
