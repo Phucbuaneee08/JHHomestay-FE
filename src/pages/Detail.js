@@ -3,7 +3,7 @@ import Description from "../components/Detail/Information/Description"
 import AmenitiesAndServices from "../components/Detail/Information/AmenitiesAndServices";
 import Rates from "../components/Detail/Information/Rates";
 import Feedback from "../components/Detail/Information/Feedback";
-import BookFormModal from "../components/Detail/BookingForm/BookFormModal";
+import BookFormModal from "../components/Detail/BookFormModal";
 import PictureContainer from "../components/Detail/PictureContainer/PictureContainer";
 import BookingCard from "../components/Detail/BookingCard";
 import NotiModal from "../components/Detail/NotiModal";
