@@ -5,7 +5,8 @@ import AmenitiesAndServices from "../components/Detail/Information/AmenitiesAndS
 import Rates from "../components/Detail/Information/Rates";
 import Feedback from "../components/Detail/Information/Feedback";
 import BookFormModal from "../components/Detail/BookingForm/BookFormModal";
-import DetailPanelPicture from "../components/Detail/PictureContainer/PictureContainer"
+import PictureContainer from "../components/Detail/PictureContainer/PictureContainer";
+import BookingCard from "../components/Detail/BookingCard";
 
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
@@ -18,9 +19,9 @@ function Detail() {
     useEffect(() => {
         const fetchData = async() => {
             try {
-                const {data: response} = await axios.get('http://localhost:8000/homestays/information/61b75d7ac2faceabc5c96d73');
-                setData(response.content.homestay)
-                console.log(response.content.homestay)
+              const {data: response} = await axios.get('http://localhost:8000/homestays/information/61c2eff28f46c1b978e3fc1b');
+              setData(response.content.homestay)
+              console.log(response.content.homestay)
             } 
             catch (error) {
                 console.error(error.message);
@@ -77,7 +78,7 @@ function Detail() {
           <BookFormModal openProp={[isOpen, setIsOpen]}/>
         </div>
       
-        <DetailPanelPicture />
+        <PictureContainer />
         <div className=" max-w-2/3 mx-auto ">
           <div className="grid grid-cols-5 mt-10 border-b border-gray-300">
             <div className="col-start-1 col-end-4">
@@ -134,8 +135,8 @@ function Detail() {
                 
             </div>
             
-            <div className="col-start-4 col-end-6 ml-32 my-8 border">
-                Booking 
+            <div className="col-start-4 col-span-2 my-8 ml-10">
+              <BookingCard></BookingCard>
             </div>
           </div>
           
