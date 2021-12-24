@@ -1,0 +1,9 @@
+.grid-container {
+    height: 500px;
+    display: grid;
+    grid-template-columns:auto auto auto auto;
+    grid-gap: 7px;
+}
+.picture1{
+    grid-area: 1 / 1 / span 2 / span 2;
+}
