@@ -19,13 +19,13 @@ function PictureContainer() {
     ]
     
     return(
-        <div className="max-w-2/3 mx-auto mb-20 ">
+        <div className="max-w-2/3 mx-auto mb-20 h-full ">
             <div className="grid-container">
-                    <img src = {fakedataPictureURL[1]} className="h-full w-full rounded-l-xl picture1"></img>
-                    <img src = {fakedataPictureURL[6]} className="h-full w-full "></img>
-                    <img src = {fakedataPictureURL[7]} className="h-full w-full rounded-tr-xl"></img>
-                    <img src = {fakedataPictureURL[8]} className="h-full w-full "></img>
-                    <img src = {fakedataPictureURL[9]} className="h-full w-full rounded-br-xl"></img>
+                    <img src = {fakedataPictureURL[1]} className=" rounded-l-xl picture picture1"></img>
+                    <img src = {fakedataPictureURL[6]} className=" picture"></img>
+                    <img src = {fakedataPictureURL[7]} className=" picture rounded-tr-xl"></img>
+                    <img src = {fakedataPictureURL[8]} className=" picture"></img>
+                    <img src = {fakedataPictureURL[9]} className=" picture rounded-br-xl"></img>
             </div>
         </div>
     )
