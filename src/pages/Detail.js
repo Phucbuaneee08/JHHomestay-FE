@@ -1,4 +1,3 @@
-
 import Footer from "../components/Shared/Footer"
 import Description from "../components/Detail/Information/Description"
 import AmenitiesAndServices from "../components/Detail/Information/AmenitiesAndServices";
@@ -7,6 +6,7 @@ import Feedback from "../components/Detail/Information/Feedback";
 import BookFormModal from "../components/Detail/BookingForm/BookFormModal";
 import PictureContainer from "../components/Detail/PictureContainer/PictureContainer";
 import BookingCard from "../components/Detail/BookingCard";
+import NotiModal from "../components/Detail/NotiModal";
 
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
@@ -16,6 +16,19 @@ import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 function Detail() {
     const [isOpen, setIsOpen] = useState(false);
     const [data, setData] = useState([])
+
+    /* Xu ly event user confirm data */
+    const [confirmState, setConfirmState] = useState(false);
+    useEffect(() => {
+    if (confirmState) {
+      const timeout = setTimeout(() => setIsNotiModalOpen(true), 5000);
+      return () => clearTimeout(timeout);
+    }
+    }, [confirmState]);
+
+     /* State for notifying modal  */
+    const [isNotiModalOpen, setIsNotiModalOpen] = useState(false);
+
     useEffect(() => {
         const fetchData = async() => {
             try {
@@ -76,6 +89,7 @@ function Detail() {
           Đặt phòng
           </button>
           <BookFormModal openProp={[isOpen, setIsOpen]}/>
+          <NotiModal openProp={[isNotiModalOpen, setIsNotiModalOpen]} state={false} setConfirmState={setConfirmState}/>
         </div>
       
         <PictureContainer />

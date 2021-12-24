@@ -30,13 +30,16 @@ const ServiceBookForm = (props) => {
       <div className="grid grid-cols-2 gap-2 px-4">
         {serviceState.map((item, index) => (
           <div
-            className="px-6 py-2 flex items-center justify-between"
+            className="py-2 mr-6 flex items-center justify-between"
             key={index}
           >
+            {/* Infomation */}
             <div>
               <p className="font-semibold text-md">{item.name}</p>
               <p className="font-light text-sm opacity-50">{item.pricePerUnit}đ</p>
             </div>
+
+            {/* Button */}
             <div className="flex items-center">
               <button
                 className={`${
@@ -44,11 +47,11 @@ const ServiceBookForm = (props) => {
                 }`}
                 onClick={handleAddService(index, false)}
               >
-                <MinusCircleIcon className="w-4" />
+                <MinusCircleIcon className="w-6 h-auto" />
               </button>
-              <span className="mx-2 text-lg font-medium">{item.amount}</span>
+              <span className="mx-2 text-xl font-medium">{item.amount}</span>
               <button onClick={handleAddService(index, true)}>
-                <PlusCircleIcon className="w-4" />
+                <PlusCircleIcon className="w-6 h-auto" />
               </button>
             </div>
           </div>
