@@ -1,9 +1,18 @@
 .grid-container {
-    height: 500px;
     display: grid;
-    grid-template-columns:auto auto auto auto;
-    grid-gap: 7px;
+    grid-template-columns:repeat(4, 1fr);
+     grid-template-rows: repeat(2, 200px); /* chỉnh chiều cao của ảnh ở thuộc tính này */
+    grid-gap: 10px;
 }
 .picture1{
     grid-area: 1 / 1 / span 2 / span 2;
+}
+.picture{
+    width:100%;
+    height: 100%;
+    object-fit:cover;
+}
+.picture:hover{
+    cursor: pointer;
+    filter:brightness(80%)
 }
