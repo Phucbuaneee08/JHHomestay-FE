@@ -45,13 +45,17 @@ const showImg  = (imgSrc,imgIndex) =>{
 }
 
 const NextImg = (i) =>{
+    if((i+1) !== fakedataPictureURL.length){
     setIndexImg(i+1)
     setTempImgSrc(fakedataPictureURL[i+1])
+    }
 }
 
 const BackImg = (i) =>{
+    if(i!==0){
     setIndexImg(i-1)
     setTempImgSrc(fakedataPictureURL[i-1])
+    }
 }
 
 const picturelist = fakedataPictureURL.map((item,index) =>
@@ -81,25 +85,25 @@ const picturelist = fakedataPictureURL.map((item,index) =>
                         className="modal2"
                         isOpen={modalImg}>
 
-                        <button onClick={()=>setModalImg(false)} className="X">
+                        <button onClick={()=>setModalImg(false)} className="X sticky top-10">
                             <svg class="w-12 h-12 text-gray-500 hover:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                         
-                        <div className="flex flex-row justify-around"> 
+                        <div className="flex flex-row justify-center"> 
 
                         <button className="Back" onClick={()=> BackImg(indexImg)}>
-                            <svg class="w-12 h-12 text-gray-500 hover:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            <svg class="w-20 h-20 text-gray-500 hover:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                         </button>
 
                         <img className="max-w-2/3 mx-auto" src={tempImgSrc} key={indexImg}></img>
 
 
-                        <button className="Next" onClick={()=> NextImg(indexImg)}>
-                            <svg class="w-12 h-12 text-gray-500 hover:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        <button className="Next " onClick={()=> NextImg(indexImg)}>
+                            <svg class="w-20 h-20 text-gray-500 hover:text-white " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
                         </div>
                         <div>
-                            <p className="text-center text-white text-xl">{indexImg+1} /{ fakedataPictureURL.length}</p>
+                            <p className="mt-3 text-center text-white text-xl">{indexImg+1} /{ fakedataPictureURL.length}</p>
                         </div>
                     </Modal>
 
