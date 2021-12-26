@@ -7,13 +7,16 @@ import BookFormModal from "../components/Detail/BookFormModal";
 import PictureContainer from "../components/Detail/PictureContainer/PictureContainer";
 import BookingCard from "../components/Detail/BookingCard";
 import NotiModal from "../components/Detail/NotiModal";
+import Header from "../components/Shared/Header"
 
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 
 function Detail() {
+    const homestayId = useSelector((state) => state.homestayIdReducer)
     const [isOpen, setIsOpen] = useState(false);
     const [data, setData] = useState([])
     const [bill, setBill] = useState([])
@@ -33,7 +36,7 @@ function Detail() {
     useEffect(() => {
         const fetchData = async() => {
             try {
-              const {data: response} = await axios.get('http://localhost:8000/homestays/information/61c6bc991af74623a15e3214');
+              const {data: response} = await axios.get(`http://localhost:8000/homestays/information/${homestayId}`);
               setData(response.content.homestay)
               setBill(response.content.billOfHomestayArray)
               //console.log(response.content.homestay)
@@ -77,12 +80,13 @@ function Detail() {
 
     return(
       <div>
+        <Header />
         <div>
           <BookFormModal openProp={[isOpen, setIsOpen]}/>
           <NotiModal openProp={[isNotiModalOpen, setIsNotiModalOpen]} state={false} setConfirmState={setConfirmState}/>
         </div>
       
-        <PictureContainer />
+        <PictureContainer/>
         <div className=" max-w-2/3 mx-auto ">
           <div className="grid grid-cols-5 mt-10 border-b border-gray-300">
             <div className="col-start-1 col-end-4">

@@ -11,9 +11,7 @@ const filterState = {
 }
 
 const guestNumber = 0
-const idState = {
-  id: '',
-}
+const idState = ""
 
 export const filterReducer = (state = filterState, action) => {
   switch (action.type) {
@@ -29,7 +27,7 @@ export const filterReducer = (state = filterState, action) => {
 export const homestayIdReducer = (state = idState, action) => {
   switch (action.type) {
     case "ID-SET":
-      return { ...state, ...action.payload };
+      return action.payload
     default:
       return state;
   }
