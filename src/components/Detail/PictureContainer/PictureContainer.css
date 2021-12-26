@@ -1,11 +1,7 @@
 .grid-container {
     display: grid;
     grid-template-columns:repeat(4, 1fr);
-<<<<<<< HEAD
      grid-template-rows: repeat(2, 300px); /* chỉnh chiều cao của ảnh ở thuộc tính này */
-=======
-    grid-template-rows: repeat(2, 200px); /* chỉnh chiều cao của ảnh ở thuộc tính này */
->>>>>>> 8c9fb0111adb8570e9bce285a0f307b9286b3d47
     grid-gap: 10px;
 }
 .picture1{
