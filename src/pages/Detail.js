@@ -16,6 +16,7 @@ import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 function Detail() {
     const [isOpen, setIsOpen] = useState(false);
     const [data, setData] = useState([])
+    const [bill, setBill] = useState([])
 
     /* Xu ly event user confirm data */
     const [confirmState, setConfirmState] = useState(false);
@@ -32,9 +33,10 @@ function Detail() {
     useEffect(() => {
         const fetchData = async() => {
             try {
-              const {data: response} = await axios.get('http://localhost:8000/homestays/information/61c2eff28f46c1b978e3fc1b');
+              const {data: response} = await axios.get('http://localhost:8000/homestays/information/61c6bc991af74623a15e3214');
               setData(response.content.homestay)
-              console.log(response.content.homestay)
+              setBill(response.content.billOfHomestayArray)
+              //console.log(response.content.homestay)
             } 
             catch (error) {
                 console.error(error.message);
@@ -76,18 +78,6 @@ function Detail() {
     return(
       <div>
         <div>
-          <button
-          className="
-          mx-2 my-2 px-3 py-2
-          border-2 border-gray-200 
-          rounded-lg
-          text-sm
-          transition duration-150 ease-in-out 
-          hover:border-gray-300"
-          onClick={() => setIsOpen(true)}
-          >
-          Đặt phòng
-          </button>
           <BookFormModal openProp={[isOpen, setIsOpen]}/>
           <NotiModal openProp={[isNotiModalOpen, setIsNotiModalOpen]} state={false} setConfirmState={setConfirmState}/>
         </div>
@@ -150,7 +140,7 @@ function Detail() {
             </div>
             
             <div className="col-start-4 col-span-2 my-8 ml-10">
-              <BookingCard></BookingCard>
+              <BookingCard formProp ={[isOpen, setIsOpen]} homestay={data} bill={bill} />
             </div>
           </div>
           

@@ -39,7 +39,7 @@ const BookFormModal = (props) => {
 
   useEffect(() => {
     let sum = 0;
-    for (let i  = 0; i < serviceState.length; i++) sum += serviceState[i].pricePerUnit * serviceState[i].amount;
+    for (let i = 0; i < serviceState.length; i++) sum += serviceState[i].pricePerUnit * serviceState[i].amount;
     setServicePrice(sum);
   }, [serviceState]);
 
