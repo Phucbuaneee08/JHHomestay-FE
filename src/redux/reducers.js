@@ -10,6 +10,7 @@ const filterState = {
   checkoutDate: '',
 }
 
+const guestNumber = 0
 const idState = {
   id: '',
 }
@@ -27,8 +28,17 @@ export const filterReducer = (state = filterState, action) => {
 
 export const homestayIdReducer = (state = idState, action) => {
   switch (action.type) {
-    case "UPDATE":
+    case "ID-SET":
       return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+}
+
+export const guestNumberReducer = (state = guestNumber, action) => {
+  switch (action.type) {
+    case "GUEST-SET":
+      return action.payload
     default:
       return state;
   }
