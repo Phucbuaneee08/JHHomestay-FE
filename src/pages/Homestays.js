@@ -10,7 +10,7 @@ import axios from "axios";
 
 function Homestays() {
     const [homestays, setHomestays] = useState([])
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(0);
     const [totalPage, setTotalPage] = useState(null)
     const [isOpen, setIsOpen]= useState(false)
     const filterData = useSelector((state) => state.filterReducer)
