@@ -5,8 +5,11 @@ const BookForm = (props) => {
   return (
     <>
       <div className="m-4">
-        <UserDataBookForm userProps={props.userProps} />
-        <ServiceBookForm serviceProps={props.serviceProps}/>
+        <UserDataBookForm
+          userProps={props.userProps}
+          countCustomer={props.countCustomer}
+        />
+        <ServiceBookForm serviceProps={props.serviceProps} />
       </div>
     </>
   );

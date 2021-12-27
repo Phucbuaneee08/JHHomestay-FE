@@ -65,7 +65,7 @@ const picturelist = fakedataPictureURL.map((item,index) =>
 )
     
     return(
-        <div className="max-w-2/3 mx-auto">
+        <div className="max-w-2/3 mx-auto mt-4">
             <div className="grid-container">
                     <img onClick={()=> setPictureShow(true)} src = {fakedataPictureURL[0]} className=" rounded-l-xl picture picture1 "></img>
                     <img onClick={()=> setPictureShow(true)} src = {fakedataPictureURL[1]} className=" picture"></img>

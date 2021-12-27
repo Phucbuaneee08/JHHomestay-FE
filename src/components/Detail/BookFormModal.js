@@ -4,45 +4,29 @@ import { Fragment, useEffect, useState } from "react";
 import BookForm from "./BookingForm/BookForm";
 import { toast } from "react-toastify";
 
-const initUserInfo = {
-  mainCustomerName: "",
-  accompanyingCustomerName: [],
-  phoneNumber: "",
-  identificationNumber: "",
-  email: "",
-};
-
-const serviceName = [
-  { name: "Lẩu thái", pricePerUnit: 300000, amount: 0 },
-  { name: "Buffet", pricePerUnit: 1000000, amount: 0 },
-  { name: "Karaoke", pricePerUnit: 500000, amount: 0 },
-  { name: "Tiệc mini", pricePerUnit: 500000, amount: 0 },
-  { name: "Lẩu hải sản", pricePerUnit: 250000, amount: 0 },
-  { name: "BBQ King", pricePerUnit: 200000, amount: 0 },
-  { name: "Nướng", pricePerUnit: 200000, amount: 0 },
-  { name: "Cơm bình dân", pricePerUnit: 50000, amount: 0 },
-  { name: "Gỏi", pricePerUnit: 500000, amount: 0 },
-];
-
 const BookFormModal = (props) => {
   /* Open state for booking modal */
   const [isOpen, setIsOpen] = props.openProp;
   const closeModal = () => setIsOpen(false);
 
-  const setConfirmState = props.setConfirmState;
+  /* Confirm State */
+  const setIsConfirmed = props.setIsConfirmed;
 
   /* User state and Service state for booking modal */
-  const [userInfo, setUserInfo] = useState(initUserInfo);
-  const [serviceState, setServiceState] = useState(serviceName);
+  const [rootState, setRootState] = props.rootProps;
+  const [serviceState, setServiceState] = useState(props.serviceProps);
 
   /* Calculate price */
-  const [servicePrice, setServicePrice] = useState(0);
+  const setServicePrice = props.setServicePrice;
   useEffect(() => {
     let sum = 0;
     for (let i = 0; i < serviceState.length; i++)
       sum += serviceState[i].pricePerUnit * serviceState[i].amount;
     setServicePrice(sum);
   }, [serviceState]);
+
+  /* Count Customer Props */
+  const countCustomer = props.countCustomer;
 
   /**
    * Kiểm tra điều kiện các props bên trong form đã được điền
@@ -55,36 +39,35 @@ const BookFormModal = (props) => {
    * 2. Danh sách dịch vụ có thể không cần chọn
    */
   const handleCloseModal = () => {
-    if (userInfo.mainCustomerName === "") {
+    if (rootState.customer.name === "") {
       toast("Tên người đặt phòng không thể bỏ trống", {
         type: toast.TYPE.ERROR,
       });
       return;
     }
 
-    // Uncomment sau khi đã truyền props số lượng hàng khách vào
-    // if (userInfo.accompanyingCustomerName.length !== so_luong_khach_di_kem) {
-    //   toast("Số lượng hành khách không khớp với khai báo", {
-    //     type: toast.TYPE.ERROR,
-    //   });
-    //   return;
-    // }
+    if (rootState.customerTogether.length !== countCustomer - 1) {
+      toast("Số lượng hành khách không khớp với khai báo", {
+        type: toast.TYPE.ERROR,
+      });
+      return;
+    }
 
-    if (userInfo.phoneNumber === "") {
+    if (rootState.customer.phoneNumber === "") {
       toast("Số điện thoại không thể bỏ trống", {
         type: toast.TYPE.ERROR,
       });
       return;
     }
 
-    if (userInfo.identificationNumber === "") {
+    if (rootState.customer.identification === "") {
       toast("Số chứng minh nhân dân không thể bỏ trống", {
         type: toast.TYPE.ERROR,
       });
       return;
     }
 
-    if (userInfo.email === "") {
+    if (rootState.customer.email === "") {
       toast("Email không thể bỏ trống", {
         type: toast.TYPE.ERROR,
       });
@@ -92,7 +75,7 @@ const BookFormModal = (props) => {
     }
 
     if (
-      !userInfo.email.match(
+      !rootState.customer.email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       )
     ) {
@@ -102,8 +85,12 @@ const BookFormModal = (props) => {
       return;
     }
 
+    const servicesPerBill = serviceState
+      .filter((item) => item.amount > 0)
+      .map((item) => ({ services: item._id, count: item.amount }));
+    setRootState({ ...rootState, servicesPerBill });
     setIsOpen(false);
-    setConfirmState(true);
+    setIsConfirmed(true);
   };
 
   return (
@@ -162,7 +149,8 @@ const BookFormModal = (props) => {
 
                 <div className="my-4 border-t border-b max-h-xl overflow-y-scroll overflow-x-hidden">
                   <BookForm
-                    userProps={[userInfo, setUserInfo]}
+                    userProps={[rootState, setRootState]}
+                    countCustomer={countCustomer}
                     serviceProps={[serviceState, setServiceState]}
                   />
                 </div>
@@ -172,7 +160,7 @@ const BookFormModal = (props) => {
                     onClick={handleCloseModal}
                     className="inline-flex justify-center px-4 py-2 text-md font-bold text-gray-900 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                   >
-                    {servicePrice === 0 ? "Xác nhận" : `${servicePrice}đ`}
+                    {props.totalPrice}đ
                   </button>
                 </div>
               </div>

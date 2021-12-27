@@ -22,6 +22,7 @@ function Homestays() {
         })
         .then(res => {
             setHomestays(res.data.content.homestays)
+            console.log(res.data.content.homestay)
             setTotalPage(res.data.content.sliceTotal)
         })
 

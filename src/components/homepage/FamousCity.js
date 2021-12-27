@@ -21,18 +21,27 @@ const cityList = [
     { name: 'Đà Lạt', img: DaLat, href: '#' },
     { name: 'Phú Quốc', img: PhuQuoc, href: '#' },
     { name: 'Sapa', img: Sapa, href: '#' },
-
 ]
+const filter = {
+    province: '',
+    type: '',
+    avarageRates: '',
+    amenities: [],
+    generalService: [],
+    minPrice: 0,
+    maxPrice: 10000000,
+    checkinDate: '',
+    checkoutDate: '',
+  }
 
 function FamousCity() {
     const dispatch = useDispatch()
 
     function cityHandler(city) {
+        const tempFilter = {...filter, province: city}
         dispatch({
             type: "UPDATE",
-            payload: {
-                province: city,
-            }
+            payload: tempFilter
         })
     }
     return (
@@ -51,7 +60,7 @@ function FamousCity() {
                                 <div id="slider" className="h-full flex md:gap-6 gap-10 items-center justify-start transition ease-out duration-700">
                                     {cityList.map((item, index) =>
                                         <Slide>
-                                            <Link to='/homestay' onClick={cityHandler(item.name)}>  
+                                            <Link to='/homestay' onClick={() => cityHandler(item.name)}>  
                                                 <div className="flex flex-shrink-0 relative w-full sm:w-auto cursor-pointer" href={item.href}>
                                                     <img src={item.img} alt="" className="rounded-md object-cover object-center w-full" />
                                                     <div className="bg-none absolute w-full h-full p-6">
@@ -83,7 +92,7 @@ function FamousCity() {
                                 <div id="slider" className="h-full flex md:gap-6 gap-10 items-center justify-start transition ease-out duration-700">
                                     {cityList.map((item, index) =>
                                         <Slide>
-                                            <Link to='/homestay' onClick={cityHandler(item.name)}>
+                                            <Link to='/homestay' onClick={() => cityHandler(item.name)}>
                                                 <div className="flex flex-shrink-0 relative w-full sm:w-auto cursor-pointer" href={item.href}>
                                                     <img src={item.img} alt="" className="rounded-md object-cover object-center w-full" />
                                                     <div className="bg-none absolute w-full h-full p-6">
@@ -115,7 +124,7 @@ function FamousCity() {
                                 <div id="slider" className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
                                     {cityList.map((item, index) =>
                                         <Slide>
-                                            <Link to='/homestay' onClick={cityHandler(item.name)}>
+                                            <Link to='/homestay' onClick={() => cityHandler(item.name)}>
                                                 <div className="flex flex-shrink-0 relative w-full sm:w-auto cursor-pointer">
                                                     <img src={item.img} alt="" className="rounded-md object-cover object-center w-full" />
                                                     <div className="bg-none absolute w-full h-full p-6">
@@ -147,7 +156,7 @@ function FamousCity() {
                                 <div id="slider" className="h-full w-full flex lg:gap-8 md:gap-6 items-center justify-start transition ease-out duration-700">
                                     {cityList.map((item, index) =>
                                         <Slide>
-                                            <Link to='/homestay' onClick={cityHandler(item.name)}>
+                                            <Link to='/homestay' onClick={() => cityHandler(item.name)}>
                                                 <div className="flex flex-shrink-0 relative w-full sm:w-auto cursor-pointer" href={item.href}>
                                                     <img src={item.img} alt="" className="rounded-md object-cover object-center w-full" />
                                                     <div className="bg-none absolute w-full h-full p-6">
