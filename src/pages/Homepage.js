@@ -3,12 +3,16 @@ import RecommendedHotelWrapper from "../components/homepage/RecommendHotelWrappe
 import FamousCity from '../components/homepage/FamousCity'
 import Type from '../components/homepage/Type'
 import Footer from "../components/Shared/Footer"
+import SearchBar from "../components/homepage/Searchbar2/SearchBar"
+
+import React, { useState, useReducer, useEffect } from 'react'
+
 function Homepage() {
-    return(
+    return (
         <div classnName="bg-gray-200">
             <HomepageHeader />
             <FamousCity />
-            <Type/>
+            <Type />
             <div className="w-full max-w-3/4 md:max-w-5/6 mx-auto">
                 <p className="text-4xl font-bold mt-5  ">Được đánh giá tốt</p>
                 <p className="text-xl mt-3">Homestay nào có nhiều đánh giá tốt, hãy cùng ZadeHill khám phá nhé</p>
@@ -19,6 +23,8 @@ function Homepage() {
             <div className="w-full">
                 <Footer />
             </div>
+            <SearchBar />
+
         </div>
     )
 }

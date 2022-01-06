@@ -12,6 +12,7 @@ import Header from "../components/Shared/Header";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import {useParams} from "react-router-dom"
 
 import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
 import { toast } from "react-toastify";
@@ -33,6 +34,7 @@ const defaultState = {
 };
 
 function Detail() {
+  const {id} = useParams()
   const homestayId = useSelector((state) => state.homestayIdReducer);
 
   /* Root State, for query data from BE */
@@ -72,7 +74,7 @@ function Detail() {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          `http://localhost:8000/homestays/information/${homestayId}`
+          `http://localhost:8000/homestays/information/${id}`
         );
         setData(response.content.homestay);
         setBill(response.content.billOfHomestayArray);

@@ -12,9 +12,11 @@ function HomestayCard(props) {
     }
     return (
         <div className="">
-            <Link to='/detail' onClick={detailHandler}>
-            <div className="bg-gray-800 h-56 2xl:h-72 rounded-2xl">
-                <img src={photos[0].url=== undefined? "../../public/no_image.png":`http://localhost:8000${photos[0].url}`} className="w-full h-full shadow-xl rounded-2xl" />
+            <Link to={`/detail/${_id}`} onClick={detailHandler}>
+            <div className="bg-gray-800 h-56 2xl:h-72 rounded-2xl overflow-hidden">
+                <img 
+                src={photos[0].url=== undefined? "../../public/no_image.png":`http://localhost:8000${photos[0].url}`} 
+                className="w-full h-full shadow-xl rounded-2xl transition-all duration-300 ease-in-out hover:scale-110 transform" />
             </div>
             </Link>
             <p className="mb-2 font-bold md:text-base text-base h-auto truncate my-2"> {name}</p>

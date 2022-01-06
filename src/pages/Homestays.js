@@ -15,26 +15,32 @@ function Homestays() {
     const [isOpen, setIsOpen]= useState(false)
     const filterData = useSelector((state) => state.filterReducer)
     const [filterInput, setFilterInput] = useState(filterData)
+      /* Loading State */
+  const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         axios.get('http://localhost:8000/homestays/filter', {
             params: {...filterData, slice: currentPage}
         })
         .then(res => {
             setHomestays(res.data.content.homestays)
-            console.log(res.data.content.homestay)
+            //console.log(res.data.content.homestay)
             setTotalPage(res.data.content.sliceTotal)
+            setIsLoading(false)
         })
 
     }, [])
     
     useEffect(() => {
+        setIsLoading(true);
         axios.get('http://localhost:8000/homestays/filter', {
             params: {...filterData, slice: currentPage}
         })
         .then(res => {
             setHomestays(res.data.content.homestays)
             setTotalPage(res.data.content.sliceTotal)
+            setIsLoading(false)
         })
 
     }, [filterData, currentPage])
@@ -58,7 +64,15 @@ function Homestays() {
                 </button>
             </div>
             <FilterModal openProp={[isOpen, setIsOpen]} filterModalProps = {[filterInput, setFilterInput]}/>
-            <FilteredHomestays homestay={homestays}/>
+            {isLoading ? (
+            <div className="flex justify-center mt-6">
+            <div
+              className="w-16 h-16 border-8 border-green-400 rounded-full border-solid animate-spin"
+              style={{ borderTop: "8px solid transparent" }}
+            />
+          </div>
+        ): (
+            <FilteredHomestays homestay={homestays}/>)}
             <Pagination
                 totalPages={totalPage}
                 paginate={paginate}

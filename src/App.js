@@ -15,7 +15,7 @@ function App() {
         <Switch>
           <Route path="/homepage" component={Homepage} />
           <Route path="/homestay" component={Homestays} />
-          <Route path="/detail" component={Detail} />
+          <Route path="/detail/:id" component={Detail} />
           <Redirect to="/homepage" />
         </Switch>
 
