@@ -13,6 +13,22 @@ const filterState = {
 const guestNumber = 0
 const idState = ""
 
+const dayState = {
+  checkinDate: new Date(),
+  checkoutDate: new Date()
+  
+}
+
+export const dayReducer = (state = dayState, action) => {
+  switch(action.type) {
+    case "DAY-UPDATE":
+      return {...state, ...action.payload}
+  default:
+    return state
+
+  }
+}
+
 export const filterReducer = (state = filterState, action) => {
   switch (action.type) {
     case "UPDATE":
