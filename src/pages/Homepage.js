@@ -3,7 +3,6 @@ import RecommendedHotelWrapper from "../components/homepage/RecommendHotelWrappe
 import FamousCity from '../components/homepage/FamousCity'
 import Type from '../components/homepage/Type'
 import Footer from "../components/Shared/Footer"
-import SearchBar from "../components/homepage/Searchbar/SearchBar"
 
 import React, { useState, useReducer, useEffect } from 'react'
 

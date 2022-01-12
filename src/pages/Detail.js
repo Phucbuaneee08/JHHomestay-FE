@@ -42,8 +42,8 @@ function Detail() {
   const [rootState, setRootState] = useState({
     ...defaultState,
     _id: homestayId,
-    checkinDate: filter.checkinDate,
-    checkoutDate: filter.checkoutDate,
+    checkinDate: filter.checkinDate || new Date(),
+    checkoutDate: filter.checkoutDate || new Date(),
   });
 
   /* State for open Booking form modal */
