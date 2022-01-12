@@ -12,7 +12,7 @@ import Header from "../components/Shared/Header";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom";
 
 import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
 import { toast } from "react-toastify";
@@ -27,18 +27,24 @@ const defaultState = {
   },
   customerTogether: [],
   _id: "",
-  checkinDate: new Date(),
-  checkoutDate: new Date(),
+  checkinDate: "",
+  checkoutDate: "",
   status: 2,
   servicesPerBill: [],
 };
 
 function Detail() {
-  const {id} = useParams()
+  const { id } = useParams();
   const homestayId = useSelector((state) => state.homestayIdReducer);
+  const filter = useSelector((state) => state.filterReducer);
 
   /* Root State, for query data from BE */
-  const [rootState, setRootState] = useState({ ...defaultState, _id: homestayId });
+  const [rootState, setRootState] = useState({
+    ...defaultState,
+    _id: homestayId,
+    checkinDate: filter.checkinDate,
+    checkoutDate: filter.checkoutDate,
+  });
 
   /* State for open Booking form modal */
   const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);

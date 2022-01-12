@@ -23,8 +23,6 @@ function Homepage() {
             <div className="w-full">
                 <Footer />
             </div>
-            <SearchBar />
-
         </div>
     )
 }
