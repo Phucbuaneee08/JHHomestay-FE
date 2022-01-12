@@ -70,14 +70,17 @@ function Detail() {
   /* Query data from BE */
   const [data, setData] = useState([]);
   const [bill, setBill] = useState([]);
+  const [pictureList,setPictureList] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
           `http://localhost:8000/homestays/information/${id}`
         );
+        console.log(response.content)
         setData(response.content.homestay);
         setBill(response.content.billOfHomestayArray);
+        setPictureList(response.content.homestay.photos)
       } catch (error) {
         toast(error.message, { type: toast.TYPE.ERROR });
       }
@@ -154,7 +157,8 @@ function Detail() {
         />
       </div>
 
-      <PictureContainer />
+      <PictureContainer _id = {id} pictureList = {pictureList}/>
+
       <div className=" max-w-2/3 mx-auto ">
         <div className="grid grid-cols-5 mt-10 border-b border-gray-300">
           <div className="col-start-1 col-end-4">
