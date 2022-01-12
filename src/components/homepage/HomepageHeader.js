@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import logo from "../../public/logo.svg"
-import SearchBar from "./Searchbar/SearchBar";
+import SearchBar from "./searchbar/SearchBar";
 
 function HomepageHeader() {
     const [show, setShow] = useState(false);
