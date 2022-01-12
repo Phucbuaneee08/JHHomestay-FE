@@ -5,6 +5,7 @@ import IntroTitle from "./IntroTitle";
 import PlaceInput from "./PlaceInput";
 import DatetimeInput from "./DatetimeInput";
 import CustomerInput from "./CustomerInput";
+import {Link} from "react-router-dom"
 
 const defaultData = {
   place: "",
@@ -25,13 +26,18 @@ function SearchBar() {
       type: "UPDATE",
       payload: {
         province: data.place,
-        checkinDate: new Date(data.from.year, data.from.month, data.from.day),
-        checkoutDate: new Date(data.to.year, data.to.month, data.to.day)
       },
     });
     dispatch({
       type: "GUEST-SET",
       payload: data.adult + data.children
+    })
+    dispatch({
+      type: "DAY-UPDATE",
+      payload: {
+        checkinDate: new Date(data.from.year, data.from.month, data.from.day),
+        checkoutDate: new Date(data.to.year, data.to.month, data.to.day)
+      }
     })
   };
 
@@ -52,12 +58,13 @@ function SearchBar() {
             dataProps={[data, setData]}
             openProps={[isOpen, setIsOpen]}
           />
-          <button
+          <Link
             className="flex justify-center flex-col sm:px-4 px-8 hover:bg-green-50 focus:shadow-xl rounded-full"
             onClick={handleSubmit}
+            to="/homestay"
           >
             <SearchIcon className="w-6 h-6" />
-          </button>
+          </Link>
         </div>
       </div>
     </>
