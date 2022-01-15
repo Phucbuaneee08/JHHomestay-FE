@@ -158,7 +158,7 @@ const BookFormModal = (props) => {
                 <div className="text-center">
                   <button
                     onClick={handleCloseModal}
-                    className="inline-flex justify-center px-4 py-2 text-md font-bold text-gray-900 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    className="inline-flex justify-center px-4 py-2 text-md font-bold text-gray-600 hover:text-white bg-green-200 border border-transparent rounded-md hover:bg-green-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                   >
                     {props.totalPrice}đ
                   </button>
