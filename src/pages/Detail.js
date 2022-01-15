@@ -36,7 +36,7 @@ const defaultState = {
 function Detail() {
   const { id } = useParams();
   const homestayId = useSelector((state) => state.homestayIdReducer);
-  const filter = useSelector((state) => state.filterReducer);
+  const filter = useSelector((state) => state.dayReducer);
 
   /* Root State, for query data from BE */
   const [rootState, setRootState] = useState({
