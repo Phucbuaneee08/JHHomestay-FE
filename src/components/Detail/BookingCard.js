@@ -161,7 +161,8 @@ function BookingCard(props) {
           <div className="grid grid-cols-2 mt-5 text-lg">
             <p className="font-bold">Tổng tiền</p>
             <div className="text-right">
-              <p>{parseFloat(totalPrice.toLocaleString())} VNĐ</p>
+              {/* <p>{totalPrice} VNĐ</p> */}
+              <p>{totalPrice.toLocaleString()} VNĐ</p>
             </div>
           </div>
         </div>
