@@ -107,7 +107,7 @@ const BookFormModal = (props) => {
 
                 <div className="text-center">
                   <button className="inline-flex justify-center px-4 py-2 text-md font-bold text-gray-900 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500">
-                    {servicePrice === 0 ? 'Xác nhận' : `${servicePrice}đ`}
+                    {servicePrice === 0 ? 'Xác nhận' : `${servicePrice.toLocaleString()}đ`}
                   </button>
                 </div>
               </div>

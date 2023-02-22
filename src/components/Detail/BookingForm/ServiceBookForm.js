@@ -36,7 +36,7 @@ const ServiceBookForm = (props) => {
             {/* Infomation */}
             <div>
               <p className="font-semibold text-md">{item.name}</p>
-              <p className="font-light text-sm opacity-50">{item.pricePerUnit}đ</p>
+              <p className="font-light text-sm opacity-50">{item.pricePerUnit.toLocaleString()}đ</p>
             </div>
 
             {/* Button */}

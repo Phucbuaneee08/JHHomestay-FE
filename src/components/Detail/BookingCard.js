@@ -9,16 +9,16 @@ function BookingCard(props) {
 
   const [rootState, setRootState] = props.rootProps;
   const [countCustomer, setCountCustomer] = props.countCustomerProps;
-  const homestayPrice = props.homestayPrice;
+  const homestayPrice = parseFloat(props.homestayPrice).toLocaleString();
   const { bill } = props;
 
   let [isOpen, setIsOpen] = props.formProp;
 
   const CountOrderDay = useMemo(
     () =>
-      Math.round(
+      Math.max(0, Math.round(
         (rootState.checkoutDate - rootState.checkinDate) / (1000 * 60 * 60 * 24)
-      ),
+      )),
     [rootState.checkinDate, rootState.checkoutDate]
   );
 
@@ -77,8 +77,8 @@ function BookingCard(props) {
   const servicePrice = props.servicePriceProps;
 
   useEffect(() => {
-    setDayPrice(CountOrderDay * homestayPrice);
-    setTotalPrice(CountOrderDay * homestayPrice + servicePrice);
+    setDayPrice(CountOrderDay * props.homestayPrice);
+    setTotalPrice(CountOrderDay * props.homestayPrice + servicePrice);
   }, [CountOrderDay, servicePrice]);
 
   return (
@@ -147,21 +147,21 @@ function BookingCard(props) {
               {homestayPrice} x {CountOrderDay} đêm
             </div>
             <div className="text-right">
-              <p>{dayPrice} VNĐ</p>
+              <p>{dayPrice.toLocaleString()} VNĐ</p>
             </div>
           </div>
 
           <div className="grid grid-cols-2 my-2">
             <p className="font-bold">Phí Dịch Vụ</p>
             <div className="text-right">
-              <p>{servicePrice} VNĐ</p>
+              <p>{parseFloat(servicePrice).toLocaleString()} VNĐ</p>
             </div>
           </div>
           <hr className="border"></hr>
           <div className="grid grid-cols-2 mt-5 text-lg">
             <p className="font-bold">Tổng tiền</p>
             <div className="text-right">
-              <p>{totalPrice} VNĐ</p>
+              <p>{parseFloat(totalPrice.toLocaleString())} VNĐ</p>
             </div>
           </div>
         </div>

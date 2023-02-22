@@ -110,9 +110,8 @@ const picturelist = fakedataPictureURL.map((item,index) =>
                     </Modal>
 
                     <Masonry
-                        className = "max-w-2/3 mx-auto"
+                        className = "max-w-2/3 mx-auto my-masonry-grid"
                         breakpointCols={2}
-                        className="my-masonry-grid"
                         columnClassName="my-masonry-grid_column">
                         {picturelist}
                     </Masonry>
