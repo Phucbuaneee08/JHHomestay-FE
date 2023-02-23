@@ -11,7 +11,7 @@ function BookingCard(props) {
   const [countCustomer, setCountCustomer] = props.countCustomerProps;
   const [discount, setDiscount] = props.discountProps;
   const homestayPrice = parseFloat(props.homestayPrice).toLocaleString();
-  const [newPrice, setNewPrice] = useState(0);
+  const [price, setPrice] = useState(Number(props.homestayPrice));
   // const newPrice = props.homestayPrice * (100 - discount) / 100;
   const { bill } = props;
 
@@ -77,19 +77,19 @@ function BookingCard(props) {
 
   const [dayPrice, setDayPrice] = useState(0);
   const [totalPrice, setTotalPrice] = props.totalPriceProps;
-  const servicePrice = props.servicePriceProps;
+  const servicePrice = Number(props.servicePriceProps);
 
   useEffect(() => {
-    setDayPrice(CountOrderDay * props.homestayPrice);
-    setTotalPrice(CountOrderDay * props.homestayPrice + servicePrice);
-  }, [CountOrderDay, servicePrice]);
+    setDayPrice(CountOrderDay * price);
+    setTotalPrice(CountOrderDay * price + servicePrice);
+  }, [CountOrderDay, price, servicePrice]);
 
   useEffect(() => {
     console.log(props.homestayPrice, discount);
     const price = props.homestayPrice * (100 - discount) / 100;
     console.log("New price " + price);
-    setNewPrice(price);
-  }, [discount]);
+    setPrice(price);
+  }, [discount, homestayPrice]);
 
   
   return (
@@ -102,7 +102,7 @@ function BookingCard(props) {
                 {homestayPrice} VND/đêm
               </p>
               <p className="text-center text-2xl font-bold text-gray-800 mb-5" >
-                {newPrice.toLocaleString()} VND/đêm
+                {price.toLocaleString()} VND/đêm
               </p>
             </div>
           ) : (
@@ -168,7 +168,7 @@ function BookingCard(props) {
           </div>
           <div className="grid grid-cols-2 my-2">
             <div>
-              {homestayPrice} x {CountOrderDay} đêm
+              {price.toLocaleString()} x {CountOrderDay} đêm
             </div>
             <div className="text-right">
               <p>{dayPrice.toLocaleString()} VNĐ</p>
@@ -178,14 +178,14 @@ function BookingCard(props) {
           <div className="grid grid-cols-2 my-2">
             <p className="font-bold">Phí Dịch Vụ</p>
             <div className="text-right">
-              <p>{parseFloat(servicePrice).toLocaleString()} VNĐ</p>
+              <p>{servicePrice.toLocaleString()} VNĐ</p>
             </div>
           </div>
           <hr className="border"></hr>
           <div className="grid grid-cols-2 mt-5 text-lg">
             <p className="font-bold">Tổng tiền</p>
             <div className="text-right">
-              <p>{parseFloat(totalPrice.toLocaleString())} VNĐ</p>
+              <p>{totalPrice.toLocaleString()} VNĐ</p>
             </div>
           </div>
         </div>
