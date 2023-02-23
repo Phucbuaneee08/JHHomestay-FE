@@ -54,6 +54,7 @@ function Detail() {
 
   /* State for confirm book homestay */
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [discount, setDiscount] = useState(0);
   useEffect(() => {
     if (isConfirmed) {
       setIsConfirmed(false);
@@ -76,7 +77,7 @@ function Detail() {
   /* Query data from BE */
   const [data, setData] = useState([]);
   const [bill, setBill] = useState([]);
-  const [pictureList,setPictureList] = useState([]);
+  const [pictureList, setPictureList] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -87,6 +88,17 @@ function Detail() {
         setData(response.content.homestay);
         setBill(response.content.billOfHomestayArray);
         setPictureList(response.content.homestay.photos)
+
+
+        const discountId = response.content.homestay.discountId;
+        if(discountId)
+        {
+          const { data: response2 } = await axios.get(
+            'http://localhost:8000/admins/discounts/' + discountId
+          )
+          setDiscount(response2.content.value)
+        }
+        
       } catch (error) {
         toast(error.message, { type: toast.TYPE.ERROR });
       }
@@ -163,7 +175,7 @@ function Detail() {
         />
       </div>
 
-      <PictureContainer _id = {id} pictureList = {pictureList}/>
+      <PictureContainer _id={id} pictureList={pictureList} />
 
       <div className=" max-w-2/3 mx-auto ">
         <div className="grid grid-cols-5 mt-10 border-b border-gray-300">
@@ -178,13 +190,13 @@ function Detail() {
               <div className="grid grid-cols-2">
                 {data.amenities && data.amenities.length
                   ? data.amenities.map((item) => (
-                      <div className="flex py-1">
-                        <AmenitiesAndServices
-                          detail={item}
-                          className="flex flex-row"
-                        />
-                      </div>
-                    ))
+                    <div className="flex py-1">
+                      <AmenitiesAndServices
+                        detail={item}
+                        className="flex flex-row"
+                      />
+                    </div>
+                  ))
                   : null}
               </div>
             </div>
@@ -197,13 +209,13 @@ function Detail() {
               <div className="grid grid-cols-2">
                 {data.generalServices && data.generalServices.length
                   ? data.generalServices.map((item) => (
-                      <div className="flex py-1">
-                        <AmenitiesAndServices
-                          detail={item}
-                          className="flex flex-row"
-                        />
-                      </div>
-                    ))
+                    <div className="flex py-1">
+                      <AmenitiesAndServices
+                        detail={item}
+                        className="flex flex-row"
+                      />
+                    </div>
+                  ))
                   : null}
               </div>
             </div>
@@ -213,13 +225,13 @@ function Detail() {
               <div className="grid grid-cols-2">
                 {data.services && data.services.length
                   ? data.services.map((item) => (
-                      <div className="flex py-1">
-                        <BoltOutlinedIcon className="text-gray-900 mr-3 mt-1" />
-                        <p className="text-lg text-gray-900 flex flex-row">
-                          {item.name}
-                        </p>
-                      </div>
-                    ))
+                    <div className="flex py-1">
+                      <BoltOutlinedIcon className="text-gray-900 mr-3 mt-1" />
+                      <p className="text-lg text-gray-900 flex flex-row">
+                        {item.name}
+                      </p>
+                    </div>
+                  ))
                   : null}
               </div>
             </div>
@@ -230,6 +242,7 @@ function Detail() {
               rootProps={[rootState, setRootState]}
               formProp={[isBookingFormOpen, setIsBookingFormOpen]}
               homestayPrice={data.price}
+              discountProps = {[discount, setDiscount]}
               bill={bill}
               servicePriceProps={servicePrice}
               totalPriceProps={[totalPrice, setTotalPrice]}

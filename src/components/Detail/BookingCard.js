@@ -2,15 +2,17 @@ import React, { useState, useMemo, useEffect } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 function BookingCard(props) {
   const dispatch = useDispatch();
-
   const [rootState, setRootState] = props.rootProps;
   const [countCustomer, setCountCustomer] = props.countCustomerProps;
+  const [discount, setDiscount] = props.discountProps;
   const homestayPrice = parseFloat(props.homestayPrice).toLocaleString();
-  const newPrice = props.homestayPrice * (100 - discount) / 100;
+  const [newPrice, setNewPrice] = useState(0);
+  // const newPrice = props.homestayPrice * (100 - discount) / 100;
   const { bill } = props;
 
   let [isOpen, setIsOpen] = props.formProp;
@@ -82,16 +84,34 @@ function BookingCard(props) {
     setTotalPrice(CountOrderDay * props.homestayPrice + servicePrice);
   }, [CountOrderDay, servicePrice]);
 
+  useEffect(() => {
+    console.log(props.homestayPrice, discount);
+    const price = props.homestayPrice * (100 - discount) / 100;
+    console.log("New price " + price);
+    setNewPrice(price);
+  }, [discount]);
+
+  
   return (
     <div className>
       <div>
         <div className="border-solid border-2  shadow-xl rounded-xl lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
-        <p className="text-center text-xl font-bold text-gray-800 mb-5 opacity-30 " style={{textDecorationLine:'line-through', margin:0}}>
-                    {homestayPrice} VND/đêm
-                  </p>
-          <p className="text-center text-2xl font-bold text-gray-800 mb-5" >
-            {homestayPrice} VND/đêm
-          </p>
+          {discount > 0 ? (
+            <div>
+              <p className="text-center text-xl font-bold text-gray-800 mb-5 opacity-30 " style={{ textDecorationLine: 'line-through', margin: 0 }}>
+                {homestayPrice} VND/đêm
+              </p>
+              <p className="text-center text-2xl font-bold text-gray-800 mb-5" >
+                {newPrice.toLocaleString()} VND/đêm
+              </p>
+            </div>
+          ) : (
+            <div>
+              <p className="text-center text-2xl font-bold text-gray-800 mb-5" >
+                {homestayPrice} VND/đêm
+              </p>
+            </div>
+          )}
           <div className="grid grid-cols-2 border rounded-t-xl">
             <div className="grid grid-rows-2">
               <label className=" p-3 text-lg font-medium text-gray-800 text-center rounded-tl-xl border">
