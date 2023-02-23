@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import logo from "../../public/logo.svg"
+import logo from "../../public/logo.png"
 import SearchBar from "./searchbar/SearchBar";
 
 function HomepageHeader() {
@@ -7,9 +7,9 @@ function HomepageHeader() {
     return (
         <div>
             <div className="relative w-full bg-homepage-background bg-cover bg-no-repeat">
-                <nav className="w-full absolute top-0 left-0">
+                <nav className="w-full absolute top-2 left-20">
                     <div className="py-2 mx-auto flex items-center justify-between max-w-3/4 md:max-w-5/6 w-full">
-                        <img className="h-12 w-auto sm:h-20" src={logo} alt="Logo"/>
+                        <img className="h-30 w-auto sm:h-20" src={logo} alt="Logo"/>
                         <div>
                             <div className="sm:block md:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 focus:outline-none" onClick={()=>setShow(!show)}>
                                 {show ? (
@@ -32,33 +32,11 @@ function HomepageHeader() {
                                             <line x1={6} y1={6} x2={18} y2={18} />
                                         </svg>
                                     </div>
-                                    <ul className="flex text-3xl md:text-base items-center py-10 md:flex flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20">
-                                        <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 hover:font-bold">
-                                            <a href="javascript: void(0)">Mệnh giá</a>
-                                        </li>
-                                        <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                            <a href="javascript: void(0)">Liên hệ</a>
-                                        </li>
-                                        <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                            <a href="javascript: void(0)">Đăng nhập</a>
-                                        </li>
-                                    </ul>
+
                                 </div>}
                             </div>
                             {/* Full menu */}
-                            <div id="menu" className="md:block hidden">
-                                <ul className="flex text-3xl md:text-base items-center py-10 md:flex flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20">
-                                    <li className="cursor-pointer lg:text-lg pt-10 md:pt-0 text-green-600 hover:text-green-700">
-                                        <a href="javascript: void(0)">Mệnh giá</a>
-                                    </li>
-                                    <li className="cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10  text-green-600 hover:text-green-700">
-                                        <a href="javascript: void(0)">Liên hệ</a>
-                                    </li>
-                                    <li className=" cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10 text-green-600 hover:text-green-700">
-                                        <a href="javascript: void(0)">Đăng nhập</a>
-                                    </li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
                 </nav>

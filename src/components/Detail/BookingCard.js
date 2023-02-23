@@ -10,6 +10,7 @@ function BookingCard(props) {
   const [rootState, setRootState] = props.rootProps;
   const [countCustomer, setCountCustomer] = props.countCustomerProps;
   const homestayPrice = parseFloat(props.homestayPrice).toLocaleString();
+  const newPrice = props.homestayPrice * (100 - discount) / 100;
   const { bill } = props;
 
   let [isOpen, setIsOpen] = props.formProp;
@@ -85,7 +86,10 @@ function BookingCard(props) {
     <div className>
       <div>
         <div className="border-solid border-2  shadow-xl rounded-xl lg:px-10 sm:px-6 sm:py-10 px-2 py-6">
-          <p className="text-center text-xl font-bold text-gray-800 mb-5">
+        <p className="text-center text-xl font-bold text-gray-800 mb-5 opacity-30 " style={{textDecorationLine:'line-through', margin:0}}>
+                    {homestayPrice} VND/đêm
+                  </p>
+          <p className="text-center text-2xl font-bold text-gray-800 mb-5" >
             {homestayPrice} VND/đêm
           </p>
           <div className="grid grid-cols-2 border rounded-t-xl">

@@ -3,7 +3,9 @@ import {useDispatch} from 'react-redux'
 
 function HomestayCard(props) {
     const dispatch = useDispatch()
+
     const { name, type, price, averageRates, photos, _id } = props.detail
+    const price1 = parseFloat(price).toLocaleString();
     function detailHandler() {
         dispatch({
             type: "ID-SET",
@@ -23,7 +25,7 @@ function HomestayCard(props) {
             <div className="flex justify-between my-2 flex-row">
                 <p className="">{type}</p>
                 <div className="flex flex-row">
-                    <p className="font-bold mr-1"> {price}</p>
+                    <p className="font-bold mr-1"> {price1}</p>
                     <p> VND/ Ngày</p>
                 </div>
             </div>

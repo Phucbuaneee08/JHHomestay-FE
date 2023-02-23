@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import logo from "../../public/logo.png"
+import logo from "../../public/logo3.png"
 
 const FooterCity =[
     {
@@ -100,7 +100,7 @@ function Footer (){
 
             <div className = "mx-auto">
                 <img
-                    className="h-40 w-40"
+                    className="h-40 w-40 "
                     src= {logo}
                     alt="Logo"
                 />

@@ -8,6 +8,7 @@ const evaluated = [
 function RecommendedHotelCard(props) {
     const { averageRates, address, name, price, _id } = props.detail
     const evaluatedPoint = pointToComment(averageRates)
+    const price1 = parseFloat(price).toLocaleString();
     const ratingShow = (
         <div className="flex">
             <div className={`${evaluated[evaluatedPoint].bg} w-10 items-center  text-center rounded-md`}>
@@ -28,7 +29,7 @@ function RecommendedHotelCard(props) {
                 <div className="flex justify-between mt-8">
                     {ratingShow}
                     <div className="flex flex-row">
-                        <p className="font-bold mr-1"> {price}</p>
+                        <p className="font-bold mr-1"> {price1}</p>
                         <p> VND/Ngày</p>
                     </div>
 

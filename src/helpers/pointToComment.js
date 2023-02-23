@@ -8,7 +8,7 @@ const pointToComment = (point) => {
         comment = 2
     else
         comment = 3
-    
+
     return comment
     
 }
